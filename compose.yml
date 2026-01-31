@@ -8,8 +8,9 @@ services:
   
   # adicione os seus outros serviços aqui
   # faça com que todos os serviços usem a mesma rede 'fase3net'
+
   db:
-    image: docker.io/erickemprobr/postgres:15
+    image: postgres:15
     container_name: hospital_tech
     environment:
       POSTGRES_USER: postgres
