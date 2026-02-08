@@ -4,12 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Agendamento {
-    private String idAgendamento;
-    private String paciente;
-    private ConsultaType consulta;
-    private String responsavel;
-    private LocalDateTime dataConsulta;
-    private boolean reagendavel;
+    private final String idAgendamento;
+    private final String paciente;
+    private final ConsultaType consulta;
+    private final String responsavel;
+    private final LocalDateTime dataConsulta;
+    private final boolean reagendavel;
 
     public Agendamento(AgendamentoBuilder builder) {
         this.idAgendamento = builder.idAgendamento;

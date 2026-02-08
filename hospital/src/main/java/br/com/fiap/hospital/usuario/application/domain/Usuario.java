@@ -3,14 +3,14 @@ package br.com.fiap.hospital.usuario.application.domain;
 import java.time.LocalDate;
 
 public class Usuario {
-    private String nome;
-    private String username;
-    private String senha;
-    private String CPF;
-    private String email;
-    private String tell;
-    private LocalDate dataNascimento;
-    private UserType tipo;
+    private final String nome;
+    private final String username;
+    private final String senha;
+    private final String CPF;
+    private final String email;
+    private final String tell;
+    private final LocalDate dataNascimento;
+    private final UserType tipo;
 
     public Usuario(UsuarioBuilder builder) {
         this.nome = builder.nome;

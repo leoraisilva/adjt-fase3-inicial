@@ -1,13 +1,13 @@
 package br.com.fiap.hospital.notificacao.application.domain;
 
 public class Notificacao {
-    private String idMensagem;
-    private String categoria;
-    private String titulo;
-    private String mensagem;
-    private String nome;
-    private String email;
-    private String tell;
+    private final String idMensagem;
+    private final String categoria;
+    private final String titulo;
+    private final String mensagem;
+    private final String nome;
+    private final String email;
+    private final String tell;
 
     public Notificacao(NotificacaoBuilder builder) {
         this.idMensagem = builder.idMensagem;
