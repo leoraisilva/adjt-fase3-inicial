@@ -1,6 +1,6 @@
-package br.com.fiap.hospital.agendamento.application.useCase.cancelar;
+package br.com.fiap.hospital.agendamento.application.useCase.inbound.cancelar;
 
-import br.com.fiap.hospital.agendamento.application.useCase.AgendamentoPort;
+import br.com.fiap.hospital.agendamento.application.useCase.inbound.AgendamentoPort;
 
 public class Cancelar {
     private final AgendamentoPort agendamentoPort;

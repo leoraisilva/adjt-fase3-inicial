@@ -1,6 +1,6 @@
-package br.com.fiap.hospital.agendamento.application.useCase.verificar;
+package br.com.fiap.hospital.agendamento.application.useCase.inbound.verificar;
 
-import br.com.fiap.hospital.agendamento.application.useCase.AgendamentoPort;
+import br.com.fiap.hospital.agendamento.application.useCase.inbound.AgendamentoPort;
 
 import java.util.List;
 

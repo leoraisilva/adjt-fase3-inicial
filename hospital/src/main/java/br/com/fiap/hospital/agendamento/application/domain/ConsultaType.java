@@ -4,5 +4,6 @@ public enum ConsultaType {
     GERAL,
     RETORNO,
     EXAME,
-    TRIAGEM
+    TRIAGEM,
+    CANCELADO
 }

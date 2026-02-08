@@ -8,7 +8,7 @@ public class Agendamento {
     private final String paciente;
     private final ConsultaType consulta;
     private final String responsavel;
-    private final LocalDateTime dataConsulta;
+    private final String dataConsulta;
     private final boolean reagendavel;
 
     public Agendamento(AgendamentoBuilder builder) {
@@ -36,7 +36,7 @@ public class Agendamento {
         return responsavel;
     }
 
-    public LocalDateTime getDataConsulta() {
+    public String getDataConsulta() {
         return dataConsulta;
     }
 
@@ -49,7 +49,7 @@ public class Agendamento {
         private String paciente;
         private ConsultaType consulta;
         private String responsavel;
-        private LocalDateTime dataConsulta;
+        private String dataConsulta;
         private boolean reagendavel;
 
         public AgendamentoBuilder withId (String idAgendamento) {
@@ -72,7 +72,7 @@ public class Agendamento {
             return this;
         }
 
-        public AgendamentoBuilder withDataConsulta (LocalDateTime dataConsulta) {
+        public AgendamentoBuilder withDataConsulta (String dataConsulta) {
             this.dataConsulta = dataConsulta;
             return this;
         }

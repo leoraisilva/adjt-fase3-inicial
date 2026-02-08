@@ -1,6 +1,6 @@
-package br.com.fiap.hospital.agendamento.application.useCase.agendar;
+package br.com.fiap.hospital.agendamento.application.useCase.inbound.agendar;
 
-import br.com.fiap.hospital.agendamento.application.useCase.AgendamentoPort;
+import br.com.fiap.hospital.agendamento.application.useCase.inbound.AgendamentoPort;
 
 public class Agendar {
     private final AgendamentoPort agendamentoPort;
