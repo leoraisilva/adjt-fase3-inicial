@@ -39,6 +39,8 @@ public class UsuarioEntity {
         this.tell = tell;
     }
 
+    public UsuarioEntity () {}
+
     public String getIdUsuario() {
         return idUsuario;
     }

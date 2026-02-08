@@ -57,7 +57,8 @@ public class UsuarioController {
 
     @PutMapping("/update")
     public ResponseEntity<UpdateUsuarioOutput> usuarioUpdate (@RequestBody UsuarioUpdateDTO usuarioDTO) {
-        var updateNewUsuario = factory.usuarioFactory(usuarioDTO.nome(),
+        var updateNewUsuario = factory.usuarioFactory(
+                usuarioDTO.nome(),
                 usuarioDTO.username(),
                 usuarioDTO.senha(),
                 usuarioDTO.dataNascimento(),
@@ -73,7 +74,7 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.OK).body(getUsuario.getUsuario(username));
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public ResponseEntity<List<ListUsuarioOutput>> usuarioList () {
         return ResponseEntity.status(HttpStatus.OK).body(listUsuario.listUsuario());
     }
