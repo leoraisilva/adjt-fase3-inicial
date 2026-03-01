@@ -1,16 +1,22 @@
 package application.domain;
 
 public class Avaliacao {
+    private final String idAvaliacao;
     private final String pressao;
     private final String oxigenacao;
     private final String quadroClinico;
     private final Classificacao risco;
 
     public Avaliacao(AvaliacaoBuilder builder ) {
+        this.idAvaliacao = builder.idAvaliacao;
         this.pressao = builder.pressao;
         this.oxigenacao = builder.oxigenacao;
         this.quadroClinico = builder.quadroClinico;
         this.risco = builder.risco;
+    }
+
+    public String getIdAvaliacao() {
+        return idAvaliacao;
     }
 
     public String getPressao() {
@@ -30,10 +36,16 @@ public class Avaliacao {
     }
 
     public static class AvaliacaoBuilder {
+        private String idAvaliacao;
         private String pressao;
         private String oxigenacao;
         private String quadroClinico;
         private Classificacao risco;
+
+        public AvaliacaoBuilder withIdAvaliacao (String idAvaliacao) {
+            this.idAvaliacao = idAvaliacao;
+            return this;
+        }
 
         public AvaliacaoBuilder withPressao (String pressao) {
             this.pressao = pressao;

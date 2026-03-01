@@ -1,6 +1,7 @@
 package application.domain;
 
 public class Anamnese {
+    private final String idAnamnese;
     private final String descricao;
     private final Intensidade dores;
     private final boolean diabete;
@@ -10,6 +11,7 @@ public class Anamnese {
     private final String membroFamilia;
 
     public Anamnese(AnamneseBuilder builder) {
+        this.idAnamnese = builder.idAnamnese;
         this.descricao = builder.descricao;
         this.dores = builder.dores;
         this.diabete = builder.diabete;
@@ -17,6 +19,10 @@ public class Anamnese {
         this.coracao = builder.coracao;
         this.historicoFamilia = builder.historicoFamilia;
         this.membroFamilia = builder.membroFamilia;
+    }
+
+    public String getIdAnamnese() {
+        return idAnamnese;
     }
 
     public String getDescricao() {
@@ -48,6 +54,7 @@ public class Anamnese {
     }
 
     public static class AnamneseBuilder {
+        private String idAnamnese;
         private String descricao;
         private Intensidade dores;
         private boolean diabete;
@@ -55,6 +62,11 @@ public class Anamnese {
         private boolean coracao;
         private String historicoFamilia;
         private String membroFamilia;
+
+        public AnamneseBuilder withIdAnamnese (String idAnamnese) {
+            this.idAnamnese = idAnamnese;
+            return this;
+        }
 
         public AnamneseBuilder withDescricao (String descricao) {
             this.descricao = descricao;

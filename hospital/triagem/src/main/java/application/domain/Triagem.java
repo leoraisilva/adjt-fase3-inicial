@@ -4,14 +4,14 @@ public class Triagem {
     private final String idTriagem;
     private final String paciente;
     private final String responsavel;
-    private final Anamnese anamese;
+    private final Anamnese anamnese;
     private final Avaliacao avaliacao;
 
     public Triagem(TriagemBuilder builder) {
         this.idTriagem = builder.idTriagem;
         this.paciente = builder.paciente;
         this.responsavel = builder.responsavel;
-        this.anamese = builder.anamese;
+        this.anamnese = builder.anamnese;
         this.avaliacao = builder.avaliacao;
     }
 
@@ -27,8 +27,8 @@ public class Triagem {
         return responsavel;
     }
 
-    public Anamnese getAnamese() {
-        return anamese;
+    public Anamnese getAnamnese() {
+        return anamnese;
     }
 
     public Avaliacao getAvaliacao() {
@@ -39,7 +39,7 @@ public class Triagem {
         private String idTriagem;
         private String paciente;
         private String responsavel;
-        private Anamnese anamese;
+        private Anamnese anamnese;
         private Avaliacao avaliacao;
 
         public TriagemBuilder withIdTriagem (String idTriagem) {
@@ -57,8 +57,8 @@ public class Triagem {
             return this;
         }
 
-        public TriagemBuilder withAnamnese (Anamnese anamese) {
-            this.anamese = anamese;
+        public TriagemBuilder withAnamnese (Anamnese anamnese) {
+            this.anamnese = anamnese;
             return this;
         }
 
