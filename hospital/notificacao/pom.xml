@@ -18,6 +18,9 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>21</java.version>
+        <grpc.version>1.68.1</grpc.version>
+        <logback.version>1.5.6</logback.version>
+        <jackson.version>2.17.2</jackson.version>
         <grpc.java.version>1.58.0</grpc.java.version>
         <tomcat.annotations.version>6.0.53</tomcat.annotations.version>
         <protoc.version>3.25.1</protoc.version>
@@ -25,8 +28,16 @@
         <os.maven.plugin.version>1.7.1</os.maven.plugin.version>
         <grpc.spring.version>3.1.0.RELEASE</grpc.spring.version>
         <protobuf.java.util.version>3.25.4</protobuf.java.util.version>
+        <surefire.version>3.3.1</surefire.version>
     </properties>
     <dependencies>
+        <!-- grpc / proto related dependencies -->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-netty-shaded</artifactId>
+            <version>${grpc.java.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
@@ -37,12 +48,46 @@
             <artifactId>grpc-stub</artifactId>
             <version>${grpc.java.version}</version>
         </dependency>
+        <!-- necessary for Java 9+ -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>annotations-api</artifactId>
             <version>${tomcat.annotations.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- logback -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <!-- Jackson lib for a performance test -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-testing</artifactId>
+            <version>${grpc.java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.devh</groupId>
+            <artifactId>grpc-server-spring-boot-starter</artifactId>
+            <version>${grpc.spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

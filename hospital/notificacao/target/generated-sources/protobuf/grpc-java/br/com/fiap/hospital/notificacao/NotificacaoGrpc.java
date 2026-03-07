@@ -15,35 +15,66 @@ public final class NotificacaoGrpc {
   public static final java.lang.String SERVICE_NAME = "notificacao.Notificacao";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<br.com.fiap.hospital.notificacao.NotificacaoRequest,
-      br.com.fiap.hospital.notificacao.NotificacaoResponse> getEnviarMethod;
+  private static volatile io.grpc.MethodDescriptor<br.com.fiap.hospital.notificacao.EnviarRequest,
+      br.com.fiap.hospital.notificacao.Response> getEnviarMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Enviar",
-      requestType = br.com.fiap.hospital.notificacao.NotificacaoRequest.class,
-      responseType = br.com.fiap.hospital.notificacao.NotificacaoResponse.class,
+      requestType = br.com.fiap.hospital.notificacao.EnviarRequest.class,
+      responseType = br.com.fiap.hospital.notificacao.Response.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<br.com.fiap.hospital.notificacao.NotificacaoRequest,
-      br.com.fiap.hospital.notificacao.NotificacaoResponse> getEnviarMethod() {
-    io.grpc.MethodDescriptor<br.com.fiap.hospital.notificacao.NotificacaoRequest, br.com.fiap.hospital.notificacao.NotificacaoResponse> getEnviarMethod;
+  public static io.grpc.MethodDescriptor<br.com.fiap.hospital.notificacao.EnviarRequest,
+      br.com.fiap.hospital.notificacao.Response> getEnviarMethod() {
+    io.grpc.MethodDescriptor<br.com.fiap.hospital.notificacao.EnviarRequest, br.com.fiap.hospital.notificacao.Response> getEnviarMethod;
     if ((getEnviarMethod = NotificacaoGrpc.getEnviarMethod) == null) {
       synchronized (NotificacaoGrpc.class) {
         if ((getEnviarMethod = NotificacaoGrpc.getEnviarMethod) == null) {
           NotificacaoGrpc.getEnviarMethod = getEnviarMethod =
-              io.grpc.MethodDescriptor.<br.com.fiap.hospital.notificacao.NotificacaoRequest, br.com.fiap.hospital.notificacao.NotificacaoResponse>newBuilder()
+              io.grpc.MethodDescriptor.<br.com.fiap.hospital.notificacao.EnviarRequest, br.com.fiap.hospital.notificacao.Response>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Enviar"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  br.com.fiap.hospital.notificacao.NotificacaoRequest.getDefaultInstance()))
+                  br.com.fiap.hospital.notificacao.EnviarRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  br.com.fiap.hospital.notificacao.NotificacaoResponse.getDefaultInstance()))
+                  br.com.fiap.hospital.notificacao.Response.getDefaultInstance()))
               .setSchemaDescriptor(new NotificacaoMethodDescriptorSupplier("Enviar"))
               .build();
         }
       }
     }
     return getEnviarMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<br.com.fiap.hospital.notificacao.ReceberRequest,
+      br.com.fiap.hospital.notificacao.Response> getReceberMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Receber",
+      requestType = br.com.fiap.hospital.notificacao.ReceberRequest.class,
+      responseType = br.com.fiap.hospital.notificacao.Response.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<br.com.fiap.hospital.notificacao.ReceberRequest,
+      br.com.fiap.hospital.notificacao.Response> getReceberMethod() {
+    io.grpc.MethodDescriptor<br.com.fiap.hospital.notificacao.ReceberRequest, br.com.fiap.hospital.notificacao.Response> getReceberMethod;
+    if ((getReceberMethod = NotificacaoGrpc.getReceberMethod) == null) {
+      synchronized (NotificacaoGrpc.class) {
+        if ((getReceberMethod = NotificacaoGrpc.getReceberMethod) == null) {
+          NotificacaoGrpc.getReceberMethod = getReceberMethod =
+              io.grpc.MethodDescriptor.<br.com.fiap.hospital.notificacao.ReceberRequest, br.com.fiap.hospital.notificacao.Response>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Receber"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  br.com.fiap.hospital.notificacao.ReceberRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  br.com.fiap.hospital.notificacao.Response.getDefaultInstance()))
+              .setSchemaDescriptor(new NotificacaoMethodDescriptorSupplier("Receber"))
+              .build();
+        }
+      }
+    }
+    return getReceberMethod;
   }
 
   /**
@@ -96,9 +127,16 @@ public final class NotificacaoGrpc {
 
     /**
      */
-    default void enviar(br.com.fiap.hospital.notificacao.NotificacaoRequest request,
-        io.grpc.stub.StreamObserver<br.com.fiap.hospital.notificacao.NotificacaoResponse> responseObserver) {
+    default void enviar(br.com.fiap.hospital.notificacao.EnviarRequest request,
+        io.grpc.stub.StreamObserver<br.com.fiap.hospital.notificacao.Response> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getEnviarMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void receber(br.com.fiap.hospital.notificacao.ReceberRequest request,
+        io.grpc.stub.StreamObserver<br.com.fiap.hospital.notificacao.Response> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReceberMethod(), responseObserver);
     }
   }
 
@@ -131,10 +169,18 @@ public final class NotificacaoGrpc {
 
     /**
      */
-    public void enviar(br.com.fiap.hospital.notificacao.NotificacaoRequest request,
-        io.grpc.stub.StreamObserver<br.com.fiap.hospital.notificacao.NotificacaoResponse> responseObserver) {
+    public void enviar(br.com.fiap.hospital.notificacao.EnviarRequest request,
+        io.grpc.stub.StreamObserver<br.com.fiap.hospital.notificacao.Response> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getEnviarMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void receber(br.com.fiap.hospital.notificacao.ReceberRequest request,
+        io.grpc.stub.StreamObserver<br.com.fiap.hospital.notificacao.Response> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getReceberMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -156,9 +202,16 @@ public final class NotificacaoGrpc {
 
     /**
      */
-    public br.com.fiap.hospital.notificacao.NotificacaoResponse enviar(br.com.fiap.hospital.notificacao.NotificacaoRequest request) {
+    public br.com.fiap.hospital.notificacao.Response enviar(br.com.fiap.hospital.notificacao.EnviarRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getEnviarMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public br.com.fiap.hospital.notificacao.Response receber(br.com.fiap.hospital.notificacao.ReceberRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getReceberMethod(), getCallOptions(), request);
     }
   }
 
@@ -180,14 +233,23 @@ public final class NotificacaoGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<br.com.fiap.hospital.notificacao.NotificacaoResponse> enviar(
-        br.com.fiap.hospital.notificacao.NotificacaoRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<br.com.fiap.hospital.notificacao.Response> enviar(
+        br.com.fiap.hospital.notificacao.EnviarRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getEnviarMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<br.com.fiap.hospital.notificacao.Response> receber(
+        br.com.fiap.hospital.notificacao.ReceberRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getReceberMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_ENVIAR = 0;
+  private static final int METHODID_RECEBER = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -207,8 +269,12 @@ public final class NotificacaoGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_ENVIAR:
-          serviceImpl.enviar((br.com.fiap.hospital.notificacao.NotificacaoRequest) request,
-              (io.grpc.stub.StreamObserver<br.com.fiap.hospital.notificacao.NotificacaoResponse>) responseObserver);
+          serviceImpl.enviar((br.com.fiap.hospital.notificacao.EnviarRequest) request,
+              (io.grpc.stub.StreamObserver<br.com.fiap.hospital.notificacao.Response>) responseObserver);
+          break;
+        case METHODID_RECEBER:
+          serviceImpl.receber((br.com.fiap.hospital.notificacao.ReceberRequest) request,
+              (io.grpc.stub.StreamObserver<br.com.fiap.hospital.notificacao.Response>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -232,9 +298,16 @@ public final class NotificacaoGrpc {
           getEnviarMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              br.com.fiap.hospital.notificacao.NotificacaoRequest,
-              br.com.fiap.hospital.notificacao.NotificacaoResponse>(
+              br.com.fiap.hospital.notificacao.EnviarRequest,
+              br.com.fiap.hospital.notificacao.Response>(
                 service, METHODID_ENVIAR)))
+        .addMethod(
+          getReceberMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              br.com.fiap.hospital.notificacao.ReceberRequest,
+              br.com.fiap.hospital.notificacao.Response>(
+                service, METHODID_RECEBER)))
         .build();
   }
 
@@ -284,6 +357,7 @@ public final class NotificacaoGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new NotificacaoFileDescriptorSupplier())
               .addMethod(getEnviarMethod())
+              .addMethod(getReceberMethod())
               .build();
         }
       }

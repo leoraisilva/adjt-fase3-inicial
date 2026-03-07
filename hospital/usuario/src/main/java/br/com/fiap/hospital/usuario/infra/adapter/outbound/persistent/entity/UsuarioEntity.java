@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Usuario")
+@Table(name = "usuario_tb")
 public class UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

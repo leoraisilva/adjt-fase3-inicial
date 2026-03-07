@@ -6,19 +6,24 @@ option java_multiple_files = true;
 option java_package = "br.com.fiap.hospital.notificacao";
 
 service Notificacao {
-    rpc Enviar (NotificacaoRequest) returns (NotificacaoResponse);
+    rpc Enviar (EnviarRequest) returns (Response);
+    rpc Receber (ReceberRequest) returns (Response);
 }
 
-message NotificacaoRequest {
-    string categoria = 1;
-    string titulo = 2;
-    string mensagem = 3;
-    string nome = 4;
-    string email = 5;
-    string tell = 6;
+message EnviarRequest {
+    string nome = 1;
+    string email = 2;
+    string tell = 3;
+    string categoria = 4;
 }
 
-message NotificacaoResponse {
+message ReceberRequest {
+    string nome = 1;
+    string email = 2;
+    string tell = 3;
+}
+
+message Response {
     string idMensagem = 1;
     string categoria = 2;
     string titulo = 3;
@@ -27,3 +32,4 @@ message NotificacaoResponse {
     string email = 6;
     string tell = 7;
 }
+

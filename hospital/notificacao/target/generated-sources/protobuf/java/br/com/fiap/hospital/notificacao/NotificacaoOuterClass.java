@@ -16,15 +16,20 @@ public final class NotificacaoOuterClass {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_notificacao_NotificacaoRequest_descriptor;
+    internal_static_notificacao_EnviarRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_notificacao_NotificacaoRequest_fieldAccessorTable;
+      internal_static_notificacao_EnviarRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_notificacao_NotificacaoResponse_descriptor;
+    internal_static_notificacao_ReceberRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_notificacao_NotificacaoResponse_fieldAccessorTable;
+      internal_static_notificacao_ReceberRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_notificacao_Response_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_notificacao_Response_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -34,33 +39,41 @@ public final class NotificacaoOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021notificacao.proto\022\013notificacao\"t\n\022Noti" +
-      "ficacaoRequest\022\021\n\tcategoria\030\001 \001(\t\022\016\n\006tit" +
-      "ulo\030\002 \001(\t\022\020\n\010mensagem\030\003 \001(\t\022\014\n\004nome\030\004 \001(" +
-      "\t\022\r\n\005email\030\005 \001(\t\022\014\n\004tell\030\006 \001(\t\"\211\001\n\023Notif" +
-      "icacaoResponse\022\022\n\nidMensagem\030\001 \001(\t\022\021\n\tca" +
-      "tegoria\030\002 \001(\t\022\016\n\006titulo\030\003 \001(\t\022\020\n\010mensage" +
-      "m\030\004 \001(\t\022\014\n\004nome\030\005 \001(\t\022\r\n\005email\030\006 \001(\t\022\014\n\004" +
-      "tell\030\007 \001(\t2Z\n\013Notificacao\022K\n\006Enviar\022\037.no" +
-      "tificacao.NotificacaoRequest\032 .notificac" +
-      "ao.NotificacaoResponseB$\n br.com.fiap.ho" +
-      "spital.notificacaoP\001b\006proto3"
+      "\n\021notificacao.proto\022\013notificacao\"M\n\rEnvi" +
+      "arRequest\022\014\n\004nome\030\001 \001(\t\022\r\n\005email\030\002 \001(\t\022\014" +
+      "\n\004tell\030\003 \001(\t\022\021\n\tcategoria\030\004 \001(\t\";\n\016Receb" +
+      "erRequest\022\014\n\004nome\030\001 \001(\t\022\r\n\005email\030\002 \001(\t\022\014" +
+      "\n\004tell\030\003 \001(\t\"~\n\010Response\022\022\n\nidMensagem\030\001" +
+      " \001(\t\022\021\n\tcategoria\030\002 \001(\t\022\016\n\006titulo\030\003 \001(\t\022" +
+      "\020\n\010mensagem\030\004 \001(\t\022\014\n\004nome\030\005 \001(\t\022\r\n\005email" +
+      "\030\006 \001(\t\022\014\n\004tell\030\007 \001(\t2\211\001\n\013Notificacao\022;\n\006" +
+      "Enviar\022\032.notificacao.EnviarRequest\032\025.not" +
+      "ificacao.Response\022=\n\007Receber\022\033.notificac" +
+      "ao.ReceberRequest\032\025.notificacao.Response" +
+      "B$\n br.com.fiap.hospital.notificacaoP\001b\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_notificacao_NotificacaoRequest_descriptor =
+    internal_static_notificacao_EnviarRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_notificacao_NotificacaoRequest_fieldAccessorTable = new
+    internal_static_notificacao_EnviarRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_notificacao_NotificacaoRequest_descriptor,
-        new java.lang.String[] { "Categoria", "Titulo", "Mensagem", "Nome", "Email", "Tell", });
-    internal_static_notificacao_NotificacaoResponse_descriptor =
+        internal_static_notificacao_EnviarRequest_descriptor,
+        new java.lang.String[] { "Nome", "Email", "Tell", "Categoria", });
+    internal_static_notificacao_ReceberRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_notificacao_NotificacaoResponse_fieldAccessorTable = new
+    internal_static_notificacao_ReceberRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_notificacao_NotificacaoResponse_descriptor,
+        internal_static_notificacao_ReceberRequest_descriptor,
+        new java.lang.String[] { "Nome", "Email", "Tell", });
+    internal_static_notificacao_Response_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_notificacao_Response_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_notificacao_Response_descriptor,
         new java.lang.String[] { "IdMensagem", "Categoria", "Titulo", "Mensagem", "Nome", "Email", "Tell", });
   }
 

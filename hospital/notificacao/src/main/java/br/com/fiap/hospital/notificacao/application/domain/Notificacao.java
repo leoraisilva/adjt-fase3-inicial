@@ -2,7 +2,7 @@ package br.com.fiap.hospital.notificacao.application.domain;
 
 public class Notificacao {
     private final String idMensagem;
-    private final String categoria;
+    private final Categoria categoria;
     private final String titulo;
     private final String mensagem;
     private final String nome;
@@ -23,7 +23,7 @@ public class Notificacao {
         return idMensagem;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
@@ -49,7 +49,7 @@ public class Notificacao {
 
     public static class NotificacaoBuilder {
         private String idMensagem;
-        private String categoria;
+        private Categoria categoria;
         private String titulo;
         private String mensagem;
         private String nome;
@@ -61,7 +61,7 @@ public class Notificacao {
             return this;
         }
 
-        public NotificacaoBuilder withCategoria (String categoria) {
+        public NotificacaoBuilder withCategoria (Categoria categoria) {
             this.categoria = categoria;
             return this;
         }
