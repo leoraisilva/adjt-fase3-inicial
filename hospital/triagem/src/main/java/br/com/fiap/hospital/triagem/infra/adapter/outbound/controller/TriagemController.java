@@ -31,9 +31,9 @@ public class TriagemController {
         return ResponseEntity.status(HttpStatus.CREATED).body(gerarTriagem.gerarTriagem(GerarTriagemDTO.toInput(gerarTriagemDTO)));
     }
 
-    @GetMapping("/consultarTriagem/{paciente}")
-    public ResponseEntity<ConsultarTriagemOutput> consultarTriagem (@PathVariable (value = "paciente") String paciente) {
-        return ResponseEntity.status(HttpStatus.OK).body(consultarTriagem.consultarTriagem(paciente));
+    @GetMapping("/consultarTriagem/{idTriagem}")
+    public ResponseEntity<ConsultarTriagemOutput> consultarTriagem (@PathVariable (value = "idTriagem") String idTriagem) {
+        return ResponseEntity.status(HttpStatus.OK).body(consultarTriagem.consultarTriagem(idTriagem));
     }
 
     @PutMapping("/alterarTriagem")

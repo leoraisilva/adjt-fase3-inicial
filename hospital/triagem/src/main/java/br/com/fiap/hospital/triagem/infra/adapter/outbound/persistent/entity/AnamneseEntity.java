@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 public class AnamneseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String idAnamnese;
     @Column(name = "descricao")
     private String descricao;

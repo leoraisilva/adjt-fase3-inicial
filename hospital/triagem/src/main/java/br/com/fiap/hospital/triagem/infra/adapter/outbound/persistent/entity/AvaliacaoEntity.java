@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 public class AvaliacaoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String idAvaliacao;
     @Column(name = "pressao_paciente")
     private  String pressao;

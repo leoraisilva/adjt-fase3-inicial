@@ -5,5 +5,5 @@ import br.com.fiap.hospital.triagem.application.domain.Triagem;
 public interface TriagemRepository {
     Triagem gerarTriagem (Triagem triagem);
     Triagem alterarTriagem (Triagem triagem);
-    Triagem consultarTriagem (String paciente);
+    Triagem consultarTriagem (String idTriagem);
 }

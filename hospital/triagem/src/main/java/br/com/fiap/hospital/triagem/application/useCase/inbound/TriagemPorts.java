@@ -9,5 +9,5 @@ import br.com.fiap.hospital.triagem.application.useCase.inbound.gerarTriagem.Ger
 public interface TriagemPorts {
     AlterarTriagemOutput alterarTriagem (AlterarTriagemInput input);
     GerarTriagemOutput gerarTriagem (GerarTriagemInput input);
-    ConsultarTriagemOutput consultarTriagem (String paciente);
+    ConsultarTriagemOutput consultarTriagem (String idTriagem);
 }

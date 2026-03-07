@@ -26,7 +26,7 @@ public class TriagemService implements TriagemPorts {
     }
 
     @Override
-    public ConsultarTriagemOutput consultarTriagem(String paciente) {
-        return ConsultarTriagemOutput.toOutput(repository.consultarTriagem(paciente));
+    public ConsultarTriagemOutput consultarTriagem(String idTriagem) {
+        return ConsultarTriagemOutput.toOutput(repository.consultarTriagem(idTriagem));
     }
 }

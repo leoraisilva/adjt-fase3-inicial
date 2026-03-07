@@ -1,11 +1,11 @@
 package br.com.fiap.hospital.triagem.application.domain;
 
 public class Triagem {
-    private final String idTriagem;
-    private final String paciente;
-    private final String responsavel;
-    private final Anamnese anamnese;
-    private final Avaliacao avaliacao;
+    private String idTriagem;
+    private String paciente;
+    private String responsavel;
+    private Anamnese anamnese;
+    private Avaliacao avaliacao;
 
     public Triagem(TriagemBuilder builder) {
         this.idTriagem = builder.idTriagem;
@@ -14,6 +14,8 @@ public class Triagem {
         this.anamnese = builder.anamnese;
         this.avaliacao = builder.avaliacao;
     }
+
+    public Triagem () {}
 
     public String getIdTriagem() {
         return idTriagem;

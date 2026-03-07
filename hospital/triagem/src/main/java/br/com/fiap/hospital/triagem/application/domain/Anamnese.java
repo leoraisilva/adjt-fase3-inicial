@@ -1,14 +1,14 @@
 package br.com.fiap.hospital.triagem.application.domain;
 
 public class Anamnese {
-    private final String idAnamnese;
-    private final String descricao;
-    private final Intensidade dores;
-    private final boolean diabete;
-    private final boolean pressaoAlta;
-    private final boolean coracao;
-    private final String historicoFamilia;
-    private final String membroFamilia;
+    private String idAnamnese;
+    private String descricao;
+    private Intensidade dores;
+    private boolean diabete;
+    private boolean pressaoAlta;
+    private boolean coracao;
+    private String historicoFamilia;
+    private String membroFamilia;
 
     public Anamnese(AnamneseBuilder builder) {
         this.idAnamnese = builder.idAnamnese;
@@ -20,6 +20,7 @@ public class Anamnese {
         this.historicoFamilia = builder.historicoFamilia;
         this.membroFamilia = builder.membroFamilia;
     }
+    public Anamnese () {}
 
     public String getIdAnamnese() {
         return idAnamnese;

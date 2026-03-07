@@ -4,13 +4,13 @@ import br.com.fiap.hospital.triagem.application.domain.Anamnese;
 import br.com.fiap.hospital.triagem.application.domain.Avaliacao;
 import br.com.fiap.hospital.triagem.application.domain.Triagem;
 
-public record ConsultarTriagemOutput(String idTriagem, String paciente, String responsavel, Anamnese anamese, Avaliacao avaliacao) {
+public record ConsultarTriagemOutput(String idTriagem, String paciente, String responsavel, Anamnese anamnese, Avaliacao avaliacao) {
     public static Triagem toDomain (ConsultarTriagemOutput output) {
         return new Triagem.TriagemBuilder()
                 .withIdTriagem(output.idTriagem())
                 .withPaciente(output.paciente())
                 .withResponsavel(output.responsavel())
-                .withAnamnese(output.anamese())
+                .withAnamnese(output.anamnese())
                 .withAvaliacao(output.avaliacao())
                 .build();
     }

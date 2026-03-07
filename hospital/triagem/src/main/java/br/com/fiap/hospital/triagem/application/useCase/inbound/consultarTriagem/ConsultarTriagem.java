@@ -9,7 +9,7 @@ public class ConsultarTriagem {
         this.triagemPorts = triagemPorts;
     }
 
-    public ConsultarTriagemOutput consultarTriagem (String paciente) {
-        return triagemPorts.consultarTriagem(paciente);
+    public ConsultarTriagemOutput consultarTriagem (String idTriagem) {
+        return triagemPorts.consultarTriagem(idTriagem);
     }
 }
