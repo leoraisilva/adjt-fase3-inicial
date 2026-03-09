@@ -12,8 +12,10 @@ import br.com.fiap.hospital.agendamento.application.useCase.inbound.verificar.Ve
 import br.com.fiap.hospital.agendamento.application.useCase.outbound.AgendamentoRepository;
 import br.com.fiap.hospital.agendamento.infra.adapter.inbound.mapper.AgendamentoMapper;
 import br.com.fiap.hospital.agendamento.infra.adapter.inbound.mapper.IAgendamentoMapper;
+import br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.repository.UsuarioJPARepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 @Configuration
 public class AgendamentoConfig {
@@ -50,4 +52,5 @@ public class AgendamentoConfig {
     IAgendamentoMapper mapper (AgendamentoFactory factory) {
         return new AgendamentoMapper(factory);
     }
+
 }

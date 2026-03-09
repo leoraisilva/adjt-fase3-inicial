@@ -13,10 +13,16 @@ import br.com.fiap.hospital.usuario.application.useCase.inbound.listUsaurio.List
 import br.com.fiap.hospital.usuario.application.useCase.inbound.updateUsuario.UpdateUsuario;
 import br.com.fiap.hospital.usuario.application.useCase.inbound.updateUsuario.UpdateUsuarioInput;
 import br.com.fiap.hospital.usuario.application.useCase.inbound.updateUsuario.UpdateUsuarioOutput;
+import br.com.fiap.hospital.usuario.infra.adapter.inbound.dto.LoginDTO;
 import br.com.fiap.hospital.usuario.infra.adapter.inbound.dto.UsuarioCreateDTO;
 import br.com.fiap.hospital.usuario.infra.adapter.inbound.dto.UsuarioUpdateDTO;
+import br.com.fiap.hospital.usuario.infra.adapter.outbound.dto.TokenDTO;
+import br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.entity.UsuarioEntity;
+import br.com.fiap.hospital.usuario.infra.config.security.TokenService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,14 +38,26 @@ public class UsuarioController {
     private final GetUsuario getUsuario;
     private final ListUsuario listUsuario;
     private final UsuarioFactory factory;
+    private final AuthenticationManager authenticationManager;
+    private final TokenService tokenService;
 
-    public UsuarioController(CreateUsuario createUsuario, UpdateUsuario updateUsuario, DeleteUsuario deleteUsuario, GetUsuario getUsuario, ListUsuario listUsuario, UsuarioFactory factory) {
+    public UsuarioController(CreateUsuario createUsuario, UpdateUsuario updateUsuario, DeleteUsuario deleteUsuario, GetUsuario getUsuario, ListUsuario listUsuario, UsuarioFactory factory, AuthenticationManager authenticationManager, TokenService tokenService) {
         this.createUsuario = createUsuario;
         this.updateUsuario = updateUsuario;
         this.deleteUsuario = deleteUsuario;
         this.getUsuario = getUsuario;
         this.listUsuario = listUsuario;
         this.factory = factory;
+        this.authenticationManager = authenticationManager;
+        this.tokenService = tokenService;
+    }
+
+    @PostMapping("/auth/login")
+    public ResponseEntity<TokenDTO> login (@RequestBody LoginDTO loginDTO) {
+        var user = new UsernamePasswordAuthenticationToken(loginDTO.username(), loginDTO.password());
+        var auth = authenticationManager.authenticate(user);
+        var token = tokenService.GenerationToken((UsuarioEntity) auth.getPrincipal());
+        return ResponseEntity.status(HttpStatus.OK).body(new TokenDTO(token));
     }
 
     @PostMapping("/create")

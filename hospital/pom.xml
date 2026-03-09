@@ -16,11 +16,13 @@
 	<name>hospital</name>
 	<description>Projeto Fase 3 da FIAP, gerenciamento de agenda de um hospital</description>
 	<modules>
+		<module>usuario</module>
 		<module>notificacao</module>
 		<module>agendamento</module>
 		<module>triagem</module>
-		<module>usuario</module>
 		<module>historico</module>
+		<module>mensageria</module>
+		<module>evento</module>
 	</modules>
 	<packaging>pom</packaging>
 

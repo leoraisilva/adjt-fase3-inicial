@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/mensageria/src/main/resources/archetype-resources" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/evento/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="evento" />
         <module name="historico" />
         <module name="notificacao" />
         <module name="triagem" />
         <module name="usuario" />
+        <module name="mensageria" />
         <module name="agendamento" />
       </profile>
     </annotationProcessing>
@@ -17,8 +23,10 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="agendamento" options="-parameters" />
+      <module name="evento" options="-parameters" />
       <module name="historico" options="-parameters" />
       <module name="hospital" options="" />
+      <module name="mensageria" options="-parameters" />
       <module name="notificacao" options="-parameters" />
       <module name="triagem" options="-parameters" />
       <module name="usuario" options="-parameters" />

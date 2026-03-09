@@ -2,12 +2,17 @@ package br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.entity;
 
 import br.com.fiap.hospital.usuario.application.domain.UserType;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "usuario_tb")
-public class UsuarioEntity {
+public class UsuarioEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String idUsuario;
@@ -57,8 +62,53 @@ public class UsuarioEntity {
         this.nome = nome;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        if (this.tipo.equals(UserType.MEDICO)) {
+            return List.of(
+                    new SimpleGrantedAuthority("ROLE_MEDICO")
+            );
+        }
+
+        else if (this.tipo.equals(UserType.ENFERMEIRO)) {
+            return List.of(
+                    new SimpleGrantedAuthority("ROLE_ENFERMEIRO")
+            );
+        }
+
+        return List.of(
+                new SimpleGrantedAuthority("ROLE_PACIENTE")
+        );
+    }
+
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
     public String getUsername() {
         return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setUsername(String username) {

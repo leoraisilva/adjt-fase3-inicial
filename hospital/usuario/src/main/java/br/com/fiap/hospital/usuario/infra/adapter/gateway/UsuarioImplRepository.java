@@ -4,7 +4,10 @@ import br.com.fiap.hospital.usuario.application.domain.Usuario;
 import br.com.fiap.hospital.usuario.application.domain.UsuarioFactory;
 import br.com.fiap.hospital.usuario.application.useCase.outbound.UsuarioRepository;
 import br.com.fiap.hospital.usuario.infra.adapter.inbound.mapper.IUsuarioMapper;
+import br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.entity.UsuarioEntity;
 import br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.repository.UsuarioJPARepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,14 +27,16 @@ public class UsuarioImplRepository implements UsuarioRepository {
 
     @Override
     public Usuario create(Usuario usuario) {
-        return mapper.toDomain(usuarioJPARepository.save(mapper.toEntity(usuario)));
+        var usuarioEntity = mapper.toEntity(usuario);
+        usuarioEntity.setSenha(passwordEncoder().encode(usuario.getSenha()));
+        return mapper.toDomain(usuarioJPARepository.save(usuarioEntity));
     }
 
     @Override
     public Usuario update(Usuario usuario) {
         var entity = usuarioJPARepository.findByUsername(usuario.getUsername());
         entity.setNome(usuario.getNome());
-        entity.setSenha(usuario.getSenha());
+        entity.setSenha(passwordEncoder().encode(usuario.getSenha()));
         entity.setDataNascimento(usuario.getDataNascimento());
         entity.setCPF(usuario.getCPF());
         entity.setTell(usuario.getTell());
@@ -56,5 +61,9 @@ public class UsuarioImplRepository implements UsuarioRepository {
     public void delete(String username) {
         var entity = usuarioJPARepository.findByUsername(username);
         usuarioJPARepository.delete(entity);
+    }
+
+    private PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
