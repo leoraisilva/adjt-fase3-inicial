@@ -35,7 +35,8 @@ A segurança é segmentada para garantir que cada usuário acesse apenas o neces
 
 ## 🚀 Como Executar
 
-    Dica: Detalhe aqui os passos para rodar o Docker Compose (se usar), como configurar o RabbitMQ/Kafka e os comandos ```mvn spring-boot:run```. 
+    Dica: Detalhe aqui os passos para rodar o Docker Compose (se usar), como configurar o RabbitMQ/Kafka e os comandos:
+ ```mvn spring-boot:run```. 
 
 ## 🧪 Testes
 
