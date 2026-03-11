@@ -9,13 +9,9 @@ O sistema permite o agendamento de consultas, gerenciamento de histórico médic
 
 <ul>
     <li>Java & Spring Boot: Framework principal para construção dos microsserviços.</li>
-
     <li>Spring Security: Implementação de autenticação básica e controle de acesso por perfis.</li>
-
     <li>GraphQL: Utilizado para consultas flexíveis e dinâmicas de históricos médicos.</li>
-
     <li>RabbitMQ ou Kafka: Mensageria para comunicação assíncrona entre os serviços de agendamento e notificações.</li>
-
     <li>Postman: Coleções inclusas para teste dos endpoints.</li>
 </ul>
 
@@ -24,9 +20,7 @@ O sistema permite o agendamento de consultas, gerenciamento de histórico médic
 A solução é dividida em serviços independentes para garantir a escalabilidade:
 <ol>
 <li> <dt> Serviço de Agendamento: Gerencia a criação e edição de consultas. Ao realizar uma alteração, dispara uma mensagem para o broker.</dt> </li>
-
 <li> <dt> Serviço de Notificações: Consome as mensagens e processa o envio de lembretes aos pacientes.</dt> </li>
-
 <li> <dt> Serviço de Histórico (Opcional): Centraliza os dados passados e disponibiliza a interface GraphQL.</dt> </li>
 </ol>
 
@@ -35,9 +29,7 @@ A solução é dividida em serviços independentes para garantir a escalabilidad
 A segurança é segmentada para garantir que cada usuário acesse apenas o necessário:
 <ul>
     <li>Médicos: Visualização e edição total do histórico de consultas.</li>
-
     <li>Enfermeiros: Registro de novas consultas e acesso ao histórico.</li>
-
     <li>Pacientes: Acesso restrito apenas às suas próprias consultas.</li>
 </ul>
 
@@ -50,8 +42,6 @@ A segurança é segmentada para garantir que cada usuário acesse apenas o neces
 Para validar as funcionalidades, utilize a collection do Postman disponível na pasta /docs ou no diretório raiz do projeto. Os endpoints cobrem:
 <ul>
     <li>Autenticação e Login.</li>
-
     <li>Agendamento e Edição de Consultas.</li>
-
     <li>Consultas via GraphQL.</li>
 </ul>
