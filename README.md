@@ -20,6 +20,8 @@ O sistema permite o agendamento de consultas, gerenciamento de histórico médic
 A solução é dividida em serviços independentes para garantir a escalabilidade:
 <ol>
 <li> <dt> Serviço de Agendamento: Gerencia a criação e edição de consultas. Ao realizar uma alteração, dispara uma mensagem para o broker.</dt> </li>
+<li> <dt> Serviço de Gerenciamento de Usuário: Gerencia a criação, edição e consultas dos usuario.</dt> </li>
+<li> <dt> Serviço de Triagem: Gerencia a serviço do processo hospitalar. </dt> </li>
 <li> <dt> Serviço de Notificações: Consome as mensagens e processa o envio de lembretes aos pacientes.</dt> </li>
 <li> <dt> Serviço de Histórico (Opcional): Centraliza os dados passados e disponibiliza a interface GraphQL.</dt> </li>
 </ol>
