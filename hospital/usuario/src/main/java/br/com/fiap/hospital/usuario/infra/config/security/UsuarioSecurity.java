@@ -26,7 +26,7 @@ public class UsuarioSecurity {
         this.securityFilter = securityFilter;
     }
 
-    @Bean
+    @Bean(name = "usuarioSecurityFilterChain")
     public SecurityFilterChain securityFilterChain (HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)

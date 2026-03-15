@@ -63,7 +63,6 @@
             <groupId>br.com.fiap</groupId>
             <artifactId>usuario</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
 
     </dependencies>
@@ -73,8 +72,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <classifier>exec</classifier> </configuration>
             </plugin>
         </plugins>
     </build>
-    
+
 </project>

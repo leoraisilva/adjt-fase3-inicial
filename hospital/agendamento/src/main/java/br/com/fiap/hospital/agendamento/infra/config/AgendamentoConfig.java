@@ -45,12 +45,12 @@ public class AgendamentoConfig {
         return new AgendamentoService(repository);
     }
     @Bean
-    AgendamentoFactory factory () {
+    AgendamentoFactory agendamentoFactory () {
         return new DefaultAgendamentoFactory();
     }
     @Bean
-    IAgendamentoMapper mapper (AgendamentoFactory factory) {
-        return new AgendamentoMapper(factory);
+    IAgendamentoMapper mapper (AgendamentoFactory agendamentoFactory) {
+        return new AgendamentoMapper(agendamentoFactory);
     }
 
 }

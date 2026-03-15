@@ -12,7 +12,7 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-@Service
+@Service("usuarioTokenService")
 public class TokenService {
     @Value("${api.security.token.secret}")
     private String secret;

@@ -21,7 +21,7 @@ public class TriagemSecurity {
         this.securityFilter = securityFilter;
     }
 
-    @Bean
+    @Bean(name = "triagemSecurityFilterChain")
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)

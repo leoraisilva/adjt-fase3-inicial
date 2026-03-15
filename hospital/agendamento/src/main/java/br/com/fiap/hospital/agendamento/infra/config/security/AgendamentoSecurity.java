@@ -21,7 +21,7 @@ public class AgendamentoSecurity {
         this.securityFilter = securityFilter;
     }
 
-    @Bean
+    @Bean(name = "agendamentoSecurityFilterChain")
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
@@ -30,7 +30,7 @@ public class AgendamentoSecurity {
                         .requestMatchers(HttpMethod.POST, "/hospital/agendamento/api/v1/agendar").hasAnyRole("MEDICO", "ENFERMEIRO", "PACIENTE")
                         .requestMatchers(HttpMethod.PUT, "/hospital/agendamento/api/v1/reagendar").hasAnyRole("MEDICO", "ENFERMEIRO", "PACIENTE")
                         .requestMatchers(HttpMethod.GET, "/hospital/agendamento/api/v1/verificar").hasAnyRole("MEDICO", "ENFERMEIRO")
-                        .requestMatchers(HttpMethod.GET, "/hospital/agendamento/api/v1/buscarConsulta/{id}").hasAnyRole("MEDICO", "ENFERMEIRO")
+                        .requestMatchers(HttpMethod.GET, "/hospital/agendamento/api/v1/buscarConsulta/{id}").hasAnyRole("MEDICO", "ENFERMEIRO", "PACIENTE")
                         .requestMatchers(HttpMethod.GET, "/hospital/agendamento/api/v1/cancelar/{id}").hasAnyRole("MEDICO", "ENFERMEIRO", "PACIENTE")
                         .anyRequest()
                         .authenticated()

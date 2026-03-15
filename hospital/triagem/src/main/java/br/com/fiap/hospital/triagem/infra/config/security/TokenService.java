@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-@Service
+@Service("triagemTokenService")
 public class TokenService {
     @Value("${api.security.token.secret}")
     private String secret;

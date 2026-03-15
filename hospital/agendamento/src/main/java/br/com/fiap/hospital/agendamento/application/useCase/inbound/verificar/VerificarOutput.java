@@ -3,7 +3,7 @@ package br.com.fiap.hospital.agendamento.application.useCase.inbound.verificar;
 import br.com.fiap.hospital.agendamento.application.domain.Agendamento;
 import br.com.fiap.hospital.agendamento.application.domain.ConsultaType;
 
-public record VerificarOutput(String idAgendamento, String paciente, ConsultaType consulta, String responsavel, String dataConsulta, boolean reagendavel) {
+public record VerificarOutput(String idAgendamento, String paciente, ConsultaType consulta, String responsavel, String dataConsulta, boolean reagendavel, boolean triagem) {
     public static Agendamento toDomain(VerificarOutput output) {
         return new Agendamento.AgendamentoBuilder()
                 .withId(output.idAgendamento())
@@ -12,6 +12,7 @@ public record VerificarOutput(String idAgendamento, String paciente, ConsultaTyp
                 .withResponsavel(output.responsavel())
                 .withDataConsulta(output.dataConsulta())
                 .withReagendavel(output.reagendavel())
+                .withTriagem(output.triagem())
                 .build();
     }
 
@@ -22,7 +23,8 @@ public record VerificarOutput(String idAgendamento, String paciente, ConsultaTyp
                 agendamento.getConsulta(),
                 agendamento.getResponsavel(),
                 agendamento.getDataConsulta(),
-                agendamento.isReagendavel()
+                agendamento.isReagendavel(),
+                agendamento.isTriagem()
         );
     }
 }

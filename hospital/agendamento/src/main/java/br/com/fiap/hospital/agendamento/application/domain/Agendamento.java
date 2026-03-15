@@ -7,6 +7,7 @@ public class Agendamento {
     private final String responsavel;
     private final String dataConsulta;
     private final boolean reagendavel;
+    private final boolean triagem;
 
     public Agendamento(AgendamentoBuilder builder) {
         this.idAgendamento = builder.idAgendamento;
@@ -15,6 +16,7 @@ public class Agendamento {
         this.responsavel = builder.responsavel;
         this.dataConsulta = builder.dataConsulta;
         this.reagendavel = builder.reagendavel;
+        this.triagem = builder.triagem;
     }
 
     public String getIdAgendamento() {
@@ -41,6 +43,10 @@ public class Agendamento {
         return reagendavel;
     }
 
+    public boolean isTriagem() {
+        return triagem;
+    }
+
     public static class AgendamentoBuilder {
         private String idAgendamento;
         private String paciente;
@@ -48,6 +54,7 @@ public class Agendamento {
         private String responsavel;
         private String dataConsulta;
         private boolean reagendavel;
+        private boolean triagem;
 
         public AgendamentoBuilder withId (String idAgendamento) {
             this.idAgendamento = idAgendamento;
@@ -76,6 +83,11 @@ public class Agendamento {
 
         public AgendamentoBuilder withReagendavel (boolean reagendavel) {
             this.reagendavel = reagendavel;
+            return this;
+        }
+
+        public AgendamentoBuilder withTriagem (boolean triagem) {
+            this.triagem = triagem;
             return this;
         }
 

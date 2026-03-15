@@ -3,7 +3,7 @@ package br.com.fiap.hospital.agendamento.application.useCase.inbound.reagendar;
 import br.com.fiap.hospital.agendamento.application.domain.Agendamento;
 import br.com.fiap.hospital.agendamento.application.domain.ConsultaType;
 
-public record ReagendarInput(String idAgendamento, String paciente, ConsultaType consulta, String responsavel, String dataConsulta, boolean reagendavel) {
+public record ReagendarInput(String idAgendamento, String paciente, ConsultaType consulta, String responsavel, String dataConsulta, boolean reagendavel, boolean triagem) {
     public static Agendamento toDomain(ReagendarInput input) {
         return new Agendamento.AgendamentoBuilder()
                 .withId(input.idAgendamento())
@@ -12,6 +12,7 @@ public record ReagendarInput(String idAgendamento, String paciente, ConsultaType
                 .withResponsavel(input.responsavel())
                 .withDataConsulta(input.dataConsulta())
                 .withReagendavel(input.reagendavel())
+                .withTriagem(input.triagem())
                 .build();
     }
 
@@ -22,7 +23,8 @@ public record ReagendarInput(String idAgendamento, String paciente, ConsultaType
                 agendamento.getConsulta(),
                 agendamento.getResponsavel(),
                 agendamento.getDataConsulta(),
-                agendamento.isReagendavel()
+                agendamento.isReagendavel(),
+                agendamento.isTriagem()
         );
     }
 }

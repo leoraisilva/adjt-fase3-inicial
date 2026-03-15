@@ -35,12 +35,12 @@ public class TriagemConfig {
     }
 
     @Bean
-    IAvaliacaoMapper avaliacaoMapper (AvaliacaoFactory factory) {
-        return new AvaliacaoMapper(factory);
+    IAvaliacaoMapper avaliacaoMapper (AvaliacaoFactory avaliacaoFactory) {
+        return new AvaliacaoMapper(avaliacaoFactory);
     }
     @Bean
-    IAnamneseMapper anamneseMapper (AnamneseFactory factory){
-        return new AnamneseMapper(factory);
+    IAnamneseMapper anamneseMapper (AnamneseFactory anamneseFactory){
+        return new AnamneseMapper(anamneseFactory);
     }
     @Bean
     AvaliacaoFactory avaliacaoFactory (){

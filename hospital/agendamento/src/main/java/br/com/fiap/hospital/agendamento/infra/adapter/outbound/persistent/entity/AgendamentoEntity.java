@@ -23,14 +23,17 @@ public class AgendamentoEntity {
     private String dataConsulta;
     @Column(name = "reagendavel")
     private boolean reagendavel;
+    @Column(name = "triagem")
+    private boolean triagem;
 
-    public AgendamentoEntity(String idAgendamento, String paciente, ConsultaType consulta, String responsavel, String dataConsulta, boolean reagendavel) {
+    public AgendamentoEntity(String idAgendamento, String paciente, ConsultaType consulta, String responsavel, String dataConsulta, boolean reagendavel, boolean triagem) {
         this.idAgendamento = idAgendamento;
         this.paciente = paciente;
         this.consulta = consulta;
         this.responsavel = responsavel;
         this.dataConsulta = dataConsulta;
         this.reagendavel = reagendavel;
+        this.triagem = triagem;
     }
 
     public AgendamentoEntity() {}
@@ -81,5 +84,13 @@ public class AgendamentoEntity {
 
     public void setReagendavel(boolean reagendavel) {
         this.reagendavel = reagendavel;
+    }
+
+    public boolean isTriagem() {
+        return triagem;
+    }
+
+    public void setTriagem(boolean triagem) {
+        this.triagem = triagem;
     }
 }

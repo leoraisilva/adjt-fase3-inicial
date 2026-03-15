@@ -51,7 +51,8 @@ public class AgendamentoController {
                 agendarDTO.consulta(),
                 agendarDTO.responsavel(),
                 agendarDTO.dataConsulta(),
-                agendarDTO.reagendavel()
+                agendarDTO.reagendavel(),
+                agendarDTO.triagem()
         );
         return ResponseEntity.status(HttpStatus.CREATED).body(agendar.agendar(AgendarInput.fromDomain(agendarInput)));
     }
@@ -64,7 +65,8 @@ public class AgendamentoController {
                 reagendarDTO.consulta(),
                 reagendarDTO.responsavel(),
                 reagendarDTO.dataConsulta(),
-                reagendarDTO.reagendavel()
+                reagendarDTO.reagendavel(),
+                reagendarDTO.triagem()
         );
         return ResponseEntity.status(HttpStatus.OK).body(reagendar.reagendar(ReagendarInput.fromDomain(reagendarInput)));
     }

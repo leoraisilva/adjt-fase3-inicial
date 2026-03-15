@@ -5,6 +5,7 @@ import br.com.fiap.hospital.agendamento.application.domain.AgendamentoFactory;
 import br.com.fiap.hospital.agendamento.application.domain.ConsultaType;
 import br.com.fiap.hospital.agendamento.application.useCase.outbound.AgendamentoRepository;
 import br.com.fiap.hospital.agendamento.infra.adapter.inbound.mapper.IAgendamentoMapper;
+import br.com.fiap.hospital.agendamento.infra.adapter.outbound.persistent.entity.AgendamentoEntity;
 import br.com.fiap.hospital.agendamento.infra.adapter.outbound.persistent.repository.AgendamentoJPARepository;
 import org.springframework.stereotype.Service;
 
@@ -29,24 +30,25 @@ public class AgendamentoImplRepository implements AgendamentoRepository {
 
     @Override
     public Agendamento findById(String idAgendamento) {
-        var optionalAgendamento = jpaRepository.findById(idAgendamento);
-        return mapper.toDomain(optionalAgendamento.get());
+        var optionalAgendamento = jpaRepository.findById(idAgendamento).orElseThrow(() -> new RuntimeException("Agendamento não localizado"));
+        return mapper.toDomain(optionalAgendamento);
     }
 
     @Override
     public Agendamento delete(String idAgendamento) {
-        var optionalAgendamento = jpaRepository.findById(idAgendamento).get();
+        var optionalAgendamento = jpaRepository.findById(idAgendamento).orElseThrow(() -> new RuntimeException("Agendamento não localizado"));
         optionalAgendamento.setConsulta(ConsultaType.CANCELADO);
         return mapper.toDomain(jpaRepository.save(optionalAgendamento));
     }
 
     @Override
     public Agendamento update(Agendamento agendamento) {
-        var optionalAgendamento = jpaRepository.findById(agendamento.getIdAgendamento()).get();
+        var optionalAgendamento = jpaRepository.findById(agendamento.getIdAgendamento()).orElseGet(AgendamentoEntity::new);
         optionalAgendamento.setConsulta(agendamento.getConsulta());
         optionalAgendamento.setPaciente(agendamento.getPaciente());
         optionalAgendamento.setReagendavel(agendamento.isReagendavel());
         optionalAgendamento.setResponsavel(agendamento.getResponsavel());
+        optionalAgendamento.setTriagem(agendamento.isTriagem());
         optionalAgendamento.setDataConsulta(agendamento .getDataConsulta());
         return mapper.toDomain(jpaRepository.save(optionalAgendamento));
     }

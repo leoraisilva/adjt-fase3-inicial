@@ -53,8 +53,8 @@ public class UsuarioConfig {
     }
 
     @Bean
-    IUsuarioMapper usuarioMapper (UsuarioFactory factory) {
-        return new UsuarioMapper(factory);
+    IUsuarioMapper usuarioMapper (UsuarioFactory usuarioFactory) {
+        return new UsuarioMapper(usuarioFactory);
     }
 
 }

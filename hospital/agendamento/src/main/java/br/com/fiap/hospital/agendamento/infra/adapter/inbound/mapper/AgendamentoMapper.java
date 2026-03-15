@@ -20,7 +20,8 @@ public class AgendamentoMapper implements IAgendamentoMapper{
                 entity.getConsulta(),
                 entity.getResponsavel(),
                 entity.getDataConsulta(),
-                entity.isReagendavel()
+                entity.isReagendavel(),
+                entity.isTriagem()
         );
     }
 
@@ -32,7 +33,8 @@ public class AgendamentoMapper implements IAgendamentoMapper{
                 agendamento.getConsulta(),
                 agendamento.getResponsavel(),
                 agendamento.getDataConsulta(),
-                agendamento.isReagendavel()
+                agendamento.isReagendavel(),
+                agendamento.isTriagem()
         );
     }
 }

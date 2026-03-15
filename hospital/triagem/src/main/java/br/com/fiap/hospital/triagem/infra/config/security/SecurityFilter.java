@@ -14,7 +14,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
-@Component
+@Component("triagemSecurityFilter")
 public class SecurityFilter extends OncePerRequestFilter {
     private final TokenService tokenService;
     private final UsuarioJPARepository repository;
