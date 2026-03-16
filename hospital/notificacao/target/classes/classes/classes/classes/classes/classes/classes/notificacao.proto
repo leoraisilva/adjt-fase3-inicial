@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package notificacao;
+
+option java_multiple_files = true;
+option java_package = "br.com.fiap.hospital.notificacao";
+
+service Notificacao {
+    rpc Enviar (EnviarRequest) returns (Response);
+    rpc Receber (ReceberRequest) returns (Response);
+}
+
+message EnviarRequest {
+    string nome = 1;
+    string email = 2;
+    string tell = 3;
+    string categoria = 4;
+}
+
+message ReceberRequest {
+    string nome = 1;
+    string email = 2;
+    string tell = 3;
+}
+
+message Response {
+    string idMensagem = 1;
+    string categoria = 2;
+    string titulo = 3;
+    string mensagem = 4;
+    string nome = 5;
+    string email = 6;
+    string tell = 7;
+}
+

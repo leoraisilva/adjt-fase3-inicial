@@ -80,20 +80,4 @@ public class HistoricoImplRepository implements HistoricoRepository {
                 })
                 .toList();
     }
-
-    @Override
-    public Historico registrarHistorico(Historico historico) {
-        var historicoEntity = repository.save(historicoMapper.toEntity(historico));
-        var usuario = usuarioRepository.findByUsername(historicoEntity.getPaciente());
-        var usuarioDomain = pacienteMapper.toDomain(usuario);
-        var triagem = triagemRepository.findById(historicoEntity.getTriagem()).orElseGet(TriagemEntity::new);
-        var anamnese = anamneseRepository.findById(triagem.getIdAnamnese()).orElseGet(AnamneseEntity::new);
-        var avaliacao = avaliacaoRepository.findById(triagem.getIdAvaliacao()).orElseGet(AvaliacaoEntity::new);
-        var triagemDomain = triagemMapper.toDomain(triagem, avaliacao, anamnese);
-        var notificacao = notificacaoRepository.findById(historicoEntity.getMensagem()).orElseGet(NotificacaoEntity::new);
-        var notificacaoDomain = mensagemMapper.entityToDomain(notificacao);
-        var consulta = agendamentoRepository.findById(historicoEntity.getConsulta_id()).orElseGet(AgendamentoEntity::new);
-        var consultaDomain = agendamentoMapper.toDomain(consulta);
-        return historicoMapper.toDomain(historicoEntity, usuarioDomain, consultaDomain, notificacaoDomain, triagemDomain);
-    }
 }

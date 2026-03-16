@@ -19,10 +19,6 @@ public class HistoricoConfig {
         return new AcessarHistorico(historicoPorts);
     }
     @Bean
-    RegistrarHistorico registrarHistorico (HistoricoPorts historicoPorts) {
-        return new RegistrarHistorico(historicoPorts);
-    }
-    @Bean
     HistoricoPorts historicoPorts (HistoricoRepository repository) {
         return new HistoricoService(repository);
     }

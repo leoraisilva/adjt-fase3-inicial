@@ -8,6 +8,8 @@ import br.com.fiap.hospital.notificacao.application.domain.Notificacao;
 import br.com.fiap.hospital.triagem.application.domain.Triagem;
 import br.com.fiap.hospital.usuario.application.domain.Usuario;
 
+import java.time.LocalDate;
+
 public class HistoricoMapper implements IHistoricoMapper {
     private final HistoricoFactory factory;
     public HistoricoMapper(HistoricoFactory factory) {
@@ -20,6 +22,7 @@ public class HistoricoMapper implements IHistoricoMapper {
                 consulta,
                 mensagem,
                 triagem,
+                LocalDate.parse(entity.getDataRegistro()),
                 entity.getResultado()
         );
     }
@@ -30,6 +33,7 @@ public class HistoricoMapper implements IHistoricoMapper {
                 historico.getConsulta().getIdAgendamento(),
                 historico.getMensagem().getIdMensagem(),
                 historico.getTriagem().getIdTriagem(),
+                historico.getDataRegistro().toString(),
                 historico.getResultado()
         );
     }

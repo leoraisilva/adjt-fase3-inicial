@@ -5,11 +5,15 @@ import br.com.fiap.hospital.notificacao.application.domain.Notificacao;
 import br.com.fiap.hospital.triagem.application.domain.Triagem;
 import br.com.fiap.hospital.usuario.application.domain.Usuario;
 
+import java.time.LocalDate;
+
 public class Historico {
+
     private final Usuario paciente;
     private final Agendamento consulta;
     private final Notificacao mensagem;
     private final Triagem triagem;
+    private final LocalDate dataRegistro;
     private final String resultado;
 
     public Historico(HistoricoBuilder builder) {
@@ -17,6 +21,7 @@ public class Historico {
         this.consulta = builder.consulta;
         this.mensagem = builder.mensagem;
         this.triagem = builder.triagem;
+        this.dataRegistro = builder.dataRegistro;
         this.resultado = builder.resultado;
     }
 
@@ -36,6 +41,10 @@ public class Historico {
         return triagem;
     }
 
+    public LocalDate getDataRegistro() {
+        return  dataRegistro;
+    }
+
     public String getResultado() {
         return resultado;
     }
@@ -45,7 +54,9 @@ public class Historico {
         private Agendamento consulta;
         private Notificacao mensagem;
         private Triagem triagem;
+        private LocalDate dataRegistro;
         private String resultado;
+
 
         public HistoricoBuilder withPaciente (Usuario paciente) {
             this.paciente = paciente;
@@ -69,6 +80,11 @@ public class Historico {
 
         public HistoricoBuilder withResultado (String resultado) {
             this.resultado = resultado;
+            return this;
+        }
+
+        public HistoricoBuilder withDataRegistro (LocalDate dataRegistro) {
+            this.dataRegistro = dataRegistro;
             return this;
         }
 

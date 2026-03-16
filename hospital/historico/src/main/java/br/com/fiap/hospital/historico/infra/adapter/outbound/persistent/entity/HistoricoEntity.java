@@ -6,6 +6,8 @@ import br.com.fiap.hospital.triagem.application.domain.Triagem;
 import br.com.fiap.hospital.usuario.application.domain.Usuario;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "historico")
 public class HistoricoEntity {
@@ -20,14 +22,17 @@ public class HistoricoEntity {
     private String  mensagem;
     @Column(name = "triagem_id")
     private String  triagem;
+    @Column(name = "data_registro")
+    private String dataRegistro;
     @Column(name = "resultado")
     private String resultado;
 
-    public HistoricoEntity(String  paciente, String consulta_id, String mensagem, String triagem, String resultado) {
+    public HistoricoEntity(String  paciente, String consulta_id, String mensagem, String triagem, String dataRegistro, String resultado) {
         this.paciente = paciente;
         this.consulta_id = consulta_id;
         this.mensagem = mensagem;
         this.triagem = triagem;
+        this.dataRegistro = dataRegistro;
         this.resultado = resultado;
     }
 
@@ -71,6 +76,14 @@ public class HistoricoEntity {
 
     public void setTriagem(String triagem) {
         this.triagem = triagem;
+    }
+
+    public String getDataRegistro() {
+        return dataRegistro;
+    }
+
+    public void setDataRegistro(String dataRegistro) {
+        this.dataRegistro = dataRegistro;
     }
 
     public String getResultado() {

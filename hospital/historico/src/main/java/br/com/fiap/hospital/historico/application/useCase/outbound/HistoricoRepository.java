@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface HistoricoRepository {
     List<Historico> acessarHistorico (String paciente);
-    Historico registrarHistorico (Historico historico);
 }
