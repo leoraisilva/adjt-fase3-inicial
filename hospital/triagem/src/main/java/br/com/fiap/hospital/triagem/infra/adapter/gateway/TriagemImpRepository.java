@@ -1,5 +1,7 @@
 package br.com.fiap.hospital.triagem.infra.adapter.gateway;
 
+import br.com.fiap.hospital.mensageria.event.*;
+import br.com.fiap.hospital.mensageria.producer.MensageriaEventProducer;
 import br.com.fiap.hospital.triagem.application.domain.Triagem;
 import br.com.fiap.hospital.triagem.application.useCase.outbound.TriagemRepository;
 import br.com.fiap.hospital.triagem.infra.adapter.inbound.mapper.ITriagemMapper;
@@ -8,8 +10,10 @@ import br.com.fiap.hospital.triagem.infra.adapter.outbound.persistent.entity.Ava
 import br.com.fiap.hospital.triagem.infra.adapter.outbound.persistent.repository.AnamneseJPARepository;
 import br.com.fiap.hospital.triagem.infra.adapter.outbound.persistent.repository.AvaliacaoJPARepository;
 import br.com.fiap.hospital.triagem.infra.adapter.outbound.persistent.repository.TriagemJPARepository;
+import br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.repository.UsuarioJPARepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Service
@@ -17,13 +21,17 @@ public class TriagemImpRepository implements TriagemRepository {
     private final AnamneseJPARepository anamneseJPARepository;
     private final AvaliacaoJPARepository avaliacaoJPARepository;
     private final TriagemJPARepository triagemJPARepository;
+    private final UsuarioJPARepository usuarioJPARepository;
     private final ITriagemMapper triagemMapper;
+    private final MensageriaEventProducer mensageria;
 
-    public TriagemImpRepository(AnamneseJPARepository anamneseJPARepository, AvaliacaoJPARepository avaliacaoJPARepository, TriagemJPARepository triagemJPARepository, ITriagemMapper triagemMapper) {
+    public TriagemImpRepository(AnamneseJPARepository anamneseJPARepository, AvaliacaoJPARepository avaliacaoJPARepository, TriagemJPARepository triagemJPARepository, UsuarioJPARepository usuarioJPARepository, ITriagemMapper triagemMapper, MensageriaEventProducer mensageria) {
         this.anamneseJPARepository = anamneseJPARepository;
         this.avaliacaoJPARepository = avaliacaoJPARepository;
         this.triagemJPARepository = triagemJPARepository;
+        this.usuarioJPARepository = usuarioJPARepository;
         this.triagemMapper = triagemMapper;
+        this.mensageria = mensageria;
     }
 
     @Override
@@ -36,6 +44,14 @@ public class TriagemImpRepository implements TriagemRepository {
         avaliacaoEntity.setRisco(triagem.getAvaliacao().getRisco().toString());
         avaliacaoJPARepository.save(avaliacaoEntity);
 
+        var avalicaoDTO = new AvaliacaoDTO(
+                avaliacaoEntity.getIdAvaliacao(),
+                avaliacaoEntity.getIdAvaliacao(),
+                avaliacaoEntity.getOxigenacao(),
+                avaliacaoEntity.getPressao(),
+                avaliacaoEntity.getRisco()
+        );
+
         var anamneseEntity = anamneseJPARepository.findById(triagem.getAnamnese().getIdAnamnese()).orElseGet(AnamneseEntity::new);
         anamneseEntity.setIdAnamnese(triagem.getAnamnese().getIdAnamnese());
         anamneseEntity.setDescricao(triagem.getAnamnese().getDescricao());
@@ -47,9 +63,53 @@ public class TriagemImpRepository implements TriagemRepository {
         anamneseEntity.setMembroFamilia(triagem.getAnamnese().getMembroFamilia());
         anamneseJPARepository.save(anamneseEntity);
 
+        var anamneseDTO = new AnamneseDTO(
+                anamneseEntity.getIdAnamnese(),
+                anamneseEntity.getDescricao(),
+                anamneseEntity.getDores(),
+                anamneseEntity.isDiabete(),
+                anamneseEntity.isPressaoAlta(),
+                anamneseEntity.isCoracao(),
+                anamneseEntity.getHistoricoFamilia(),
+                anamneseEntity.getMembroFamilia()
+        );
+
         var triagemEntity = triagemMapper.toEntity(triagem);
         triagemEntity.setIdTriagem(UUID.randomUUID().toString());
-        return triagemMapper.toDomain(triagemJPARepository.save(triagemEntity), avaliacaoEntity, anamneseEntity);
+        var usuario = usuarioJPARepository.findByUsername(triagemEntity.getPaciente());
+        triagemEntity = triagemJPARepository.save(triagemEntity);
+
+        var triagemDTO = new TriagemDTO(
+                triagem.getIdTriagem(),
+                triagem.getPaciente(),
+                triagem.getResponsavel(),
+                anamneseDTO,
+                avalicaoDTO
+        );
+
+        var usuarioDTO = new UsuarioDTO(
+                usuario.getIdUsuario(),
+                usuario.getNome(),
+                usuario.getUsername(),
+                usuario.getPassword(),
+                usuario.getDataNascimento().toString(),
+                usuario.getTipo().toString(),
+                usuario.getCPF(),
+                usuario.getEmail(),
+                usuario.getTell()
+        );
+
+        var mensagemEnviada = new HistoricoDTO(
+                usuarioDTO,
+                null,
+                null,
+                triagemDTO,
+                LocalDate.now().toString(),
+                "Criar a triagem para usuario " + usuarioDTO.username()
+        );
+
+        mensageria.sendHistorico(mensagemEnviada);
+        return triagemMapper.toDomain(triagemEntity, avaliacaoEntity, anamneseEntity);
     }
 
     @Override
@@ -62,6 +122,14 @@ public class TriagemImpRepository implements TriagemRepository {
         avaliacaoEntity.setRisco(triagem.getAvaliacao().getRisco().toString());
         avaliacaoJPARepository.save(avaliacaoEntity);
 
+        var avalicaoDTO = new AvaliacaoDTO(
+                avaliacaoEntity.getIdAvaliacao(),
+                avaliacaoEntity.getIdAvaliacao(),
+                avaliacaoEntity.getOxigenacao(),
+                avaliacaoEntity.getPressao(),
+                avaliacaoEntity.getRisco()
+        );
+
         var anamneseEntity = anamneseJPARepository.findById(triagem.getAnamnese().getIdAnamnese()).orElseThrow(() -> new RuntimeException("Anamnese não encontrada"));
         anamneseEntity.setIdAnamnese(triagem.getAnamnese().getIdAnamnese());
         anamneseEntity.setDescricao(triagem.getAnamnese().getDescricao());
@@ -73,12 +141,53 @@ public class TriagemImpRepository implements TriagemRepository {
         anamneseEntity.setMembroFamilia(triagem.getAnamnese().getMembroFamilia());
         anamneseJPARepository.save(anamneseEntity);
 
+        var anamneseDTO = new AnamneseDTO(
+                anamneseEntity.getIdAnamnese(),
+                anamneseEntity.getDescricao(),
+                anamneseEntity.getDores(),
+                anamneseEntity.isDiabete(),
+                anamneseEntity.isPressaoAlta(),
+                anamneseEntity.isCoracao(),
+                anamneseEntity.getHistoricoFamilia(),
+                anamneseEntity.getMembroFamilia()
+        );
+
         var triagemEntity = triagemJPARepository.findByPaciente(triagem.getPaciente());
         triagemEntity.setResponsavel(triagem.getResponsavel());
         triagemEntity.setIdTriagem(triagem.getIdTriagem());
         triagemEntity.setIdAnamnese(anamneseEntity.getIdAnamnese());
         triagemEntity.setIdAvaliacao(avaliacaoEntity.getIdAvaliacao());
+        var usuario = usuarioJPARepository.findByUsername(triagemEntity.getPaciente());
         triagemJPARepository.save(triagemEntity);
+
+        var triagemDTO = new TriagemDTO(
+                triagem.getIdTriagem(),
+                triagem.getPaciente(),
+                triagem.getResponsavel(),
+                anamneseDTO,
+                avalicaoDTO
+        );
+
+        var usuarioDTO = new UsuarioDTO(
+                usuario.getIdUsuario(),
+                usuario.getNome(),
+                usuario.getUsername(),
+                usuario.getPassword(),
+                usuario.getDataNascimento().toString(),
+                usuario.getTipo().toString(),
+                usuario.getCPF(),
+                usuario.getEmail(),
+                usuario.getTell()
+        );
+
+        var mensagemEnviada = new HistoricoDTO(
+                usuarioDTO,
+                null,
+                null,
+                triagemDTO,
+                LocalDate.now().toString(),
+                "Alterar a triagem para usuario " + usuarioDTO.username()
+        );
 
         return triagemMapper.toDomain(triagemEntity, avaliacaoEntity, anamneseEntity);
     }

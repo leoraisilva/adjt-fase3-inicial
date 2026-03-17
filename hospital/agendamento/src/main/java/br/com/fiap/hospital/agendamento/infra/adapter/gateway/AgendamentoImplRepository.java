@@ -7,8 +7,14 @@ import br.com.fiap.hospital.agendamento.application.useCase.outbound.Agendamento
 import br.com.fiap.hospital.agendamento.infra.adapter.inbound.mapper.IAgendamentoMapper;
 import br.com.fiap.hospital.agendamento.infra.adapter.outbound.persistent.entity.AgendamentoEntity;
 import br.com.fiap.hospital.agendamento.infra.adapter.outbound.persistent.repository.AgendamentoJPARepository;
+import br.com.fiap.hospital.mensageria.event.AgendamentoDTO;
+import br.com.fiap.hospital.mensageria.event.HistoricoDTO;
+import br.com.fiap.hospital.mensageria.event.UsuarioDTO;
+import br.com.fiap.hospital.mensageria.producer.MensageriaEventProducer;
+import br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.repository.UsuarioJPARepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -16,16 +22,51 @@ public class AgendamentoImplRepository implements AgendamentoRepository {
     private final AgendamentoJPARepository jpaRepository;
     private final IAgendamentoMapper mapper;
     private final AgendamentoFactory factory;
+    private final MensageriaEventProducer mensageria;
+    private final UsuarioJPARepository usuarioJPARepository;
 
-    public AgendamentoImplRepository(AgendamentoJPARepository jpaRepository, IAgendamentoMapper mapper, AgendamentoFactory factory) {
+    public AgendamentoImplRepository(AgendamentoJPARepository jpaRepository, IAgendamentoMapper mapper, AgendamentoFactory factory, MensageriaEventProducer mensageria, UsuarioJPARepository usuarioJPARepository) {
         this.jpaRepository = jpaRepository;
         this.mapper = mapper;
         this.factory = factory;
+        this.mensageria = mensageria;
+        this.usuarioJPARepository = usuarioJPARepository;
     }
 
     @Override
     public Agendamento create(Agendamento agendamento) {
-        return mapper.toDomain(jpaRepository.save(mapper.toEntity(agendamento)));
+        var agendamentoEntity = jpaRepository.save(mapper.toEntity(agendamento));
+        var usuarioEntity = usuarioJPARepository.findByUsername(agendamento.getPaciente());
+        var usuarioDTO = new UsuarioDTO(
+                usuarioEntity.getIdUsuario(),
+                usuarioEntity.getNome(),
+                usuarioEntity.getUsername(),
+                usuarioEntity.getPassword(),
+                usuarioEntity.getDataNascimento().toString(),
+                usuarioEntity.getTipo().toString(),
+                usuarioEntity.getCPF(),
+                usuarioEntity.getEmail(),
+                usuarioEntity.getTell()
+        );
+        var agendamentoDTO = new AgendamentoDTO(
+                agendamentoEntity.getIdAgendamento(),
+                agendamentoEntity.getPaciente(),
+                agendamentoEntity.getConsulta().toString(),
+                agendamentoEntity.getResponsavel(),
+                agendamentoEntity.getDataConsulta(),
+                agendamentoEntity.isReagendavel(),
+                agendamentoEntity.isTriagem()
+        );
+        var mensagemEnviada = new HistoricoDTO(
+                usuarioDTO,
+                agendamentoDTO,
+                null,
+                null,
+                LocalDate.now().toString(),
+                "Criar agendamento para usuario " + usuarioDTO.username()
+        );
+        mensageria.sendHistorico(mensagemEnviada);
+        return mapper.toDomain(agendamentoEntity);
     }
 
     @Override
@@ -36,21 +77,81 @@ public class AgendamentoImplRepository implements AgendamentoRepository {
 
     @Override
     public Agendamento delete(String idAgendamento) {
-        var optionalAgendamento = jpaRepository.findById(idAgendamento).orElseThrow(() -> new RuntimeException("Agendamento não localizado"));
-        optionalAgendamento.setConsulta(ConsultaType.CANCELADO);
-        return mapper.toDomain(jpaRepository.save(optionalAgendamento));
+        var agendamentoEntity = jpaRepository.findById(idAgendamento).orElseThrow(() -> new RuntimeException("Agendamento não localizado"));
+        agendamentoEntity.setConsulta(ConsultaType.CANCELADO);
+        var usuarioEntity = usuarioJPARepository.findByUsername(agendamentoEntity.getPaciente());
+        var usuarioDTO = new UsuarioDTO(
+                usuarioEntity.getIdUsuario(),
+                usuarioEntity.getNome(),
+                usuarioEntity.getUsername(),
+                usuarioEntity.getPassword(),
+                usuarioEntity.getDataNascimento().toString(),
+                usuarioEntity.getTipo().toString(),
+                usuarioEntity.getCPF(),
+                usuarioEntity.getEmail(),
+                usuarioEntity.getTell()
+        );
+        var agendamentoDTO = new AgendamentoDTO(
+                agendamentoEntity.getIdAgendamento(),
+                agendamentoEntity.getPaciente(),
+                agendamentoEntity.getConsulta().toString(),
+                agendamentoEntity.getResponsavel(),
+                agendamentoEntity.getDataConsulta(),
+                agendamentoEntity.isReagendavel(),
+                agendamentoEntity.isTriagem()
+        );
+        var mensagemEnviada = new HistoricoDTO(
+                usuarioDTO,
+                agendamentoDTO,
+                null,
+                null,
+                LocalDate.now().toString(),
+                "Cancelar agendamento para usuario " + usuarioDTO.username()
+        );
+        mensageria.sendHistorico(mensagemEnviada);
+        return mapper.toDomain(jpaRepository.save(agendamentoEntity));
     }
 
     @Override
     public Agendamento update(Agendamento agendamento) {
-        var optionalAgendamento = jpaRepository.findById(agendamento.getIdAgendamento()).orElseGet(AgendamentoEntity::new);
-        optionalAgendamento.setConsulta(agendamento.getConsulta());
-        optionalAgendamento.setPaciente(agendamento.getPaciente());
-        optionalAgendamento.setReagendavel(agendamento.isReagendavel());
-        optionalAgendamento.setResponsavel(agendamento.getResponsavel());
-        optionalAgendamento.setTriagem(agendamento.isTriagem());
-        optionalAgendamento.setDataConsulta(agendamento .getDataConsulta());
-        return mapper.toDomain(jpaRepository.save(optionalAgendamento));
+        var agendamentoEntity = jpaRepository.findById(agendamento.getIdAgendamento()).orElseGet(AgendamentoEntity::new);
+        agendamentoEntity.setConsulta(agendamento.getConsulta());
+        agendamentoEntity.setPaciente(agendamento.getPaciente());
+        agendamentoEntity.setReagendavel(agendamento.isReagendavel());
+        agendamentoEntity.setResponsavel(agendamento.getResponsavel());
+        agendamentoEntity.setTriagem(agendamento.isTriagem());
+        agendamentoEntity.setDataConsulta(agendamento .getDataConsulta());
+        var usuarioEntity = usuarioJPARepository.findByUsername(agendamentoEntity.getPaciente());
+        var usuarioDTO = new UsuarioDTO(
+                usuarioEntity.getIdUsuario(),
+                usuarioEntity.getNome(),
+                usuarioEntity.getUsername(),
+                usuarioEntity.getPassword(),
+                usuarioEntity.getDataNascimento().toString(),
+                usuarioEntity.getTipo().toString(),
+                usuarioEntity.getCPF(),
+                usuarioEntity.getEmail(),
+                usuarioEntity.getTell()
+        );
+        var agendamentoDTO = new AgendamentoDTO(
+                agendamentoEntity.getIdAgendamento(),
+                agendamentoEntity.getPaciente(),
+                agendamentoEntity.getConsulta().toString(),
+                agendamentoEntity.getResponsavel(),
+                agendamentoEntity.getDataConsulta(),
+                agendamentoEntity.isReagendavel(),
+                agendamentoEntity.isTriagem()
+        );
+        var mensagemEnviada = new HistoricoDTO(
+                usuarioDTO,
+                agendamentoDTO,
+                null,
+                null,
+                LocalDate.now().toString(),
+                "Alterar agendamento para usuario " + usuarioDTO.username()
+        );
+        mensageria.sendHistorico(mensagemEnviada);
+        return mapper.toDomain(jpaRepository.save(agendamentoEntity));
     }
 
     @Override

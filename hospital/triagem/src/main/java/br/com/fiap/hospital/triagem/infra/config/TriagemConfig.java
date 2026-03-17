@@ -1,5 +1,6 @@
 package br.com.fiap.hospital.triagem.infra.config;
 
+import br.com.fiap.hospital.mensageria.producer.MensageriaEventProducer;
 import br.com.fiap.hospital.triagem.application.domain.*;
 import br.com.fiap.hospital.triagem.application.service.TriagemService;
 import br.com.fiap.hospital.triagem.application.useCase.inbound.TriagemPorts;
@@ -12,6 +13,7 @@ import br.com.fiap.hospital.triagem.infra.adapter.inbound.mapper.*;
 import br.com.fiap.hospital.triagem.infra.adapter.outbound.persistent.repository.AnamneseJPARepository;
 import br.com.fiap.hospital.triagem.infra.adapter.outbound.persistent.repository.AvaliacaoJPARepository;
 import br.com.fiap.hospital.triagem.infra.adapter.outbound.persistent.repository.TriagemJPARepository;
+import br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.repository.UsuarioJPARepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -59,7 +61,7 @@ public class TriagemConfig {
         return new TriagemService(repository);
     }
     @Bean
-    TriagemRepository repository (AnamneseJPARepository anamneseJPARepository, AvaliacaoJPARepository avaliacaoJPARepository, TriagemJPARepository triagemJPARepository, ITriagemMapper triagemMapper) {
-        return new TriagemImpRepository(anamneseJPARepository, avaliacaoJPARepository, triagemJPARepository,triagemMapper);
+    TriagemRepository repository (AnamneseJPARepository anamneseJPARepository, AvaliacaoJPARepository avaliacaoJPARepository, TriagemJPARepository triagemJPARepository, UsuarioJPARepository usuarioJPARepository, ITriagemMapper triagemMapper, MensageriaEventProducer mensageria) {
+        return new TriagemImpRepository(anamneseJPARepository, avaliacaoJPARepository, triagemJPARepository, usuarioJPARepository, triagemMapper, mensageria);
     }
 }
