@@ -1,65 +1,66 @@
 type Historico {
-    idHistorico : String!
-    usuario : Usuario!
-    agendamento : Agendamento
-    notificacao : Notificacao
+    idHistorico : String
+    paciente : Usuario
+    consulta : Agendamento
+    mensagem : Notificacao
     triagem : Triagem
+    dataRegistro: String
     resultado : String
 }
 
 type Usuario {
-    idUsuario : String!
-    nome : String!
-    username : String!
+    nome : String
+    username : String
     senha : String
-    dataNascimento : String!
-    tipo : String!
-    CPF : String!
-    email : String!
+    dataNascimento : String
+    tipo : String
+    CPF : String
+    email : String
     tell : String
 }
 
 type Notificacao {
-    idMensagem : String!
-    categoria : String!
-    titulo : String!
-    mensagem : String!
-    nome : String!
-    email : String!
-    tell : String!
+    idMensagem : String
+    categoria : String
+    titulo : String
+    mensagem : String
+    nome : String
+    email : String
+    tell : String
 }
 
 type Agendamento {
-    idAgendamento : String!
-    paciente : String!
-    consulta : String!
-    responsavel : String!
-    dataConsulta : String!
-    reagendavel : Boolean!
+    idAgendamento : String
+    paciente : String
+    consulta : String
+    responsavel : String
+    dataConsulta : String
+    reagendavel : Boolean
 }
 
 type Triagem {
-    paciente : String!
-    responsavel : String!
-    anamnese : Anamnese!
-    avaliacao : Avaliacao!
+    idTriagem : String
+    paciente : String
+    responsavel : String
+    anamnese : Anamnese
+    avaliacao : Avaliacao
 }
 
 type Anamnese {
-    descricao : String!
-    dores : String!
-    diabete : Boolean!
-    pressaoAlta : Boolean!
-    coracao : Boolean!
-    historicoFamilia : String!
-    membroFamilia : String!
+    descricao : String
+    dores : String
+    diabete : Boolean
+    pressaoAlta : Boolean
+    coracao : Boolean
+    historicoFamilia : String
+    membroFamilia : String
 }
 
 type Avaliacao {
-    pressao : String!
-    oxigenacao : String!
-    quadroClinico : String!
-    risco : String!
+    pressao : String
+    oxigenacao : String
+    quadroClinico : String
+    risco : String
 }
 
 type Query {

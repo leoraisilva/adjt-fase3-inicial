@@ -1,0 +1,301 @@
+openapi: 3.0.0
+info:
+  title: Hospital Tech API
+  version: 1.0.0
+  description: API convertida a partir de Postman Collection
+
+servers:
+  - url: http://localhost
+
+paths:
+
+  /hospital/usuario/api/v1/create:
+    post:
+      summary: Criar usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+      responses:
+        '200':
+          description: OK
+
+  /hospital/usuario/api/v1/auth/login:
+    post:
+      summary: Login de usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: OK
+
+  /hospital/usuario/api/v1/get/{username}:
+    get:
+      summary: Buscar usuário
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+
+  /hospital/usuario/api/v1/list:
+    get:
+      summary: Listar usuários
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+
+  /hospital/usuario/api/v1/update:
+    put:
+      summary: Atualizar usuário
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+      responses:
+        '200':
+          description: OK
+
+  /hospital/usuario/api/v1/delete/{username}:
+    delete:
+      summary: Deletar usuário
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+
+  /hospital/agendamento/api/v1/agendar:
+    post:
+      summary: Agendar consulta
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Agendamento'
+      responses:
+        '200':
+          description: OK
+
+  /hospital/agendamento/api/v1/buscarConsulta/{id}:
+    get:
+      summary: Buscar consulta
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+
+  /hospital/agendamento/api/v1/verificar:
+    get:
+      summary: Verificar agendamentos
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+
+  /hospital/agendamento/api/v1/reagendar:
+    put:
+      summary: Reagendar consulta
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Agendamento'
+      responses:
+        '200':
+          description: OK
+
+  /hospital/agendamento/api/v1/cancelar/{id}:
+    delete:
+      summary: Cancelar consulta
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+
+  /hospital/triagem/api/v1/gerarTriagem:
+    post:
+      summary: Gerar triagem
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Triagem'
+      responses:
+        '200':
+          description: OK
+
+  /hospital/triagem/api/v1/consultarTriagem/{id}:
+    get:
+      summary: Consultar triagem
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+
+  /hospital/triagem/api/v1/alterarTriagem:
+    put:
+      summary: Alterar triagem
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Triagem'
+      responses:
+        '200':
+          description: OK
+
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    Usuario:
+      type: object
+      properties:
+        nome:
+          type: string
+        username:
+          type: string
+        senha:
+          type: string
+        dataNascimento:
+          type: string
+          format: date
+        tipo:
+          type: integer
+        CPF:
+          type: string
+        email:
+          type: string
+        tell:
+          type: string
+
+    Agendamento:
+      type: object
+      properties:
+        idAgendamento:
+          type: string
+        paciente:
+          type: string
+        consulta:
+          type: integer
+        responsavel:
+          type: string
+        dataConsulta:
+          type: string
+          format: date
+        reagendavel:
+          type: boolean
+        triagem:
+          type: boolean
+
+    Triagem:
+      type: object
+      properties:
+        paciente:
+          type: string
+        responsavel:
+          type: string
+        anamnese:
+          $ref: '#/components/schemas/Anamnese'
+        avaliacao:
+          $ref: '#/components/schemas/Avaliacao'
+
+    Anamnese:
+      type: object
+      properties:
+        descricao:
+          type: string
+        dores:
+          type: integer
+        diabete:
+          type: boolean
+        pressaoAlta:
+          type: boolean
+        coracao:
+          type: boolean
+        historicoFamilia:
+          type: string
+        membroFamilia:
+          type: string
+
+    Avaliacao:
+      type: object
+      properties:
+        pressao:
+          type: string
+        oxigenacao:
+          type: string
+        quadroClinico:
+          type: string
+        risco:
+          type: integer

@@ -12,7 +12,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "br.com.fiap.hospital.notificacao",
         "br.com.fiap.hospital.usuario",
         "br.com.fiap.hospital.triagem",
-        "br.com.fiap.hospital.agendamento"
+        "br.com.fiap.hospital.agendamento",
+        "br.com.fiap.hospital.mensageria"
 })
 @EnableJpaRepositories(basePackages = {
         "br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.repository",

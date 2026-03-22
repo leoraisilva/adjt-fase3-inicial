@@ -31,7 +31,7 @@ public class AgendamentoSecurity {
                         .requestMatchers(HttpMethod.PUT, "/hospital/agendamento/api/v1/reagendar").hasAnyRole("MEDICO", "ENFERMEIRO", "PACIENTE")
                         .requestMatchers(HttpMethod.GET, "/hospital/agendamento/api/v1/verificar").hasAnyRole("MEDICO", "ENFERMEIRO")
                         .requestMatchers(HttpMethod.GET, "/hospital/agendamento/api/v1/buscarConsulta/{id}").hasAnyRole("MEDICO", "ENFERMEIRO", "PACIENTE")
-                        .requestMatchers(HttpMethod.GET, "/hospital/agendamento/api/v1/cancelar/{id}").hasAnyRole("MEDICO", "ENFERMEIRO", "PACIENTE")
+                        .requestMatchers(HttpMethod.DELETE, "/hospital/agendamento/api/v1/cancelar/{id}").hasAnyRole("MEDICO", "ENFERMEIRO", "PACIENTE")
                         .anyRequest()
                         .authenticated()
                 )

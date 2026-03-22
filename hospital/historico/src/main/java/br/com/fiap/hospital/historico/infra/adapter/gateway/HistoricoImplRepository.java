@@ -6,7 +6,9 @@ import br.com.fiap.hospital.agendamento.infra.adapter.outbound.persistent.reposi
 import br.com.fiap.hospital.historico.application.domain.Historico;
 import br.com.fiap.hospital.historico.application.useCase.outbound.HistoricoRepository;
 import br.com.fiap.hospital.historico.infra.adapter.inbound.mapper.IHistoricoMapper;
+import br.com.fiap.hospital.historico.infra.adapter.outbound.persistent.entity.HistoricoEntity;
 import br.com.fiap.hospital.historico.infra.adapter.outbound.persistent.repository.HistoricoJpaRepository;
+import br.com.fiap.hospital.mensageria.event.HistoricoDTO;
 import br.com.fiap.hospital.notificacao.infra.adapter.inbound.mapper.INotificacaoMapper;
 import br.com.fiap.hospital.notificacao.infra.adapter.outbound.persistent.entity.NotificacaoEntity;
 import br.com.fiap.hospital.notificacao.infra.adapter.outbound.persistent.repository.NotificacaoJpaRepository;
@@ -59,16 +61,43 @@ public class HistoricoImplRepository implements HistoricoRepository {
         return repository.findAll().stream()
                 .filter(h -> Objects.equals(h.getPaciente(), paciente))
                 .map(h -> {
-                    var usuario = usuarioRepository.findByUsername(h.getPaciente());
+                    var usuario = usuarioRepository.findByUsername(paciente);
                     var usuarioDomain = pacienteMapper.toDomain(usuario);
-                    var triagem = triagemRepository.findById(h.getTriagem()).orElseGet(TriagemEntity::new);
-                    var anamnese = anamneseRepository.findById(triagem.getIdAnamnese()).orElseGet(AnamneseEntity::new);
-                    var avaliacao = avaliacaoRepository.findById(triagem.getIdAvaliacao()).orElseGet(AvaliacaoEntity::new);
-                    var triagemDomain = triagemMapper.toDomain(triagem, avaliacao, anamnese);
-                    var notificacao = notificacaoRepository.findById(h.getMensagem()).orElseGet(NotificacaoEntity::new);
-                    var notificacaoDomain = mensagemMapper.entityToDomain(notificacao);
-                    var consulta = agendamentoRepository.findById(h.getConsulta_id()).orElseGet(AgendamentoEntity::new);
-                    var consultaDomain = agendamentoMapper.toDomain(consulta);
+
+                    TriagemEntity triagem = null;
+                    if (h.getTriagem() != null) {
+                        triagem = triagemRepository.findById(h.getTriagem()).orElse(null);
+                    }
+
+                    AnamneseEntity anamnese = null;
+                    if (triagem != null && triagem.getIdAnamnese() != null) {
+                        anamnese = anamneseRepository.findById(triagem.getIdAnamnese()).orElse(null);
+                    }
+
+                    AvaliacaoEntity avaliacao = null;
+                    if (triagem != null && triagem.getIdAvaliacao() != null) {
+                        avaliacao = avaliacaoRepository.findById(triagem.getIdAvaliacao()).orElse(null);
+                    }
+
+                    var triagemDomain = triagem != null
+                            ? triagemMapper.toDomain(triagem, avaliacao, anamnese)
+                            : null;
+
+                    NotificacaoEntity notificacao = null;
+                    if (h.getMensagem() != null) {
+                        notificacao = notificacaoRepository.findById(h.getMensagem()).orElse(null);
+                    }
+                    var notificacaoDomain = notificacao != null
+                            ? mensagemMapper.entityToDomain(notificacao)
+                            : null;
+
+                    AgendamentoEntity consulta = null;
+                    if (h.getConsulta() != null) {
+                        consulta = agendamentoRepository.findById(h.getConsulta()).orElse(null);
+                    }
+                    var consultaDomain = consulta != null
+                            ? agendamentoMapper.toDomain(consulta)
+                            : null;
 
                     return historicoMapper.toDomain(
                             h,
@@ -79,5 +108,39 @@ public class HistoricoImplRepository implements HistoricoRepository {
                     );
                 })
                 .toList();
+    }
+
+    public void registrar(HistoricoDTO historico) {
+
+        var usuario = historico.usuario() != null &&
+                historico.usuario().username() != null
+                ? usuarioRepository.findByUsername(historico.usuario().username())
+                : null;
+
+        var triagem = historico.triagem() != null &&
+                historico.triagem().idTriagem() != null
+                ? triagemRepository.findById(historico.triagem().idTriagem()).orElse(null)
+                : null;
+
+        var notificacao = historico.notificacao() != null &&
+                historico.notificacao().idMensagem() != null
+                ? notificacaoRepository.findById(historico.notificacao().idMensagem()).orElse(null)
+                : null;
+
+        var consulta = historico.agendamento() != null &&
+                historico.agendamento().idAgendamento() != null
+                ? agendamentoRepository.findById(historico.agendamento().idAgendamento()).orElse(null)
+                : null;
+
+        var historicoEntity = new HistoricoEntity(
+                historico.usuario().username(),
+                consulta != null ? historico.agendamento().idAgendamento() : null,
+                notificacao != null ? historico.notificacao().idMensagem(): null,
+                triagem != null ? historico.triagem().idTriagem() : null,
+                historico.dataRegistro(),
+                historico.resultado()
+        );
+
+        repository.save(historicoEntity);
     }
 }

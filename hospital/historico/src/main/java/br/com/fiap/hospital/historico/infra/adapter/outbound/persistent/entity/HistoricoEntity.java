@@ -9,15 +9,15 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "historico")
+@Table(name = "historico_tb")
 public class HistoricoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String historicoId;
+    private String idHistorico;
     @Column(name = "paciente")
     private String  paciente;
-    @Column(name = "consulta")
-    private String consulta_id;
+    @Column(name = "consulta_id")
+    private String consulta;
     @Column(name = "mensagem_id")
     private String  mensagem;
     @Column(name = "triagem_id")
@@ -27,9 +27,9 @@ public class HistoricoEntity {
     @Column(name = "resultado")
     private String resultado;
 
-    public HistoricoEntity(String  paciente, String consulta_id, String mensagem, String triagem, String dataRegistro, String resultado) {
+    public HistoricoEntity(String  paciente, String consulta, String mensagem, String triagem, String dataRegistro, String resultado) {
         this.paciente = paciente;
-        this.consulta_id = consulta_id;
+        this.consulta = consulta;
         this.mensagem = mensagem;
         this.triagem = triagem;
         this.dataRegistro = dataRegistro;
@@ -38,12 +38,12 @@ public class HistoricoEntity {
 
     public HistoricoEntity(){}
 
-    public String getHistoricoId() {
-        return historicoId;
+    public String getIdHistorico() {
+        return idHistorico;
     }
 
-    public void setHistoricoId(String historicoId) {
-        this.historicoId = historicoId;
+    public void setIdHistorico(String idHistorico) {
+        this.idHistorico = idHistorico;
     }
 
     public String  getPaciente() {
@@ -54,12 +54,12 @@ public class HistoricoEntity {
         this.paciente = paciente;
     }
 
-    public String getConsulta_id() {
-        return consulta_id;
+    public String getConsulta() {
+        return consulta;
     }
 
-    public void setConsulta_id(String consulta_id) {
-        this.consulta_id = consulta_id;
+    public void setConsulta(String consulta) {
+        this.consulta = consulta;
     }
 
     public String getMensagem() {

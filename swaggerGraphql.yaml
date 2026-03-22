@@ -1,0 +1,141 @@
+openapi: 3.0.0
+info:
+  title: Hospital Tech GraphQL Adaptado
+  version: 1.0.0
+  description: Conversão do schema GraphQL para REST (OpenAPI)
+
+servers:
+  - url: http://localhost
+
+paths:
+
+  /historico/{paciente}:
+    get:
+      summary: Buscar histórico do paciente
+      parameters:
+        - name: paciente
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de histórico
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Historico'
+
+components:
+
+  schemas:
+
+    Historico:
+      type: object
+      properties:
+        paciente:
+          $ref: '#/components/schemas/Usuario'
+        consulta:
+          $ref: '#/components/schemas/Agendamento'
+        mensagem:
+          $ref: '#/components/schemas/Notificacao'
+        triagem:
+          $ref: '#/components/schemas/Triagem'
+        dataRegistro:
+          type: string
+        resultado:
+          type: string
+
+    Usuario:
+      type: object
+      properties:
+        nome:
+          type: string
+        username:
+          type: string
+        senha:
+          type: string
+        dataNascimento:
+          type: string
+        tipo:
+          type: string
+        CPF:
+          type: string
+        email:
+          type: string
+        tell:
+          type: string
+
+    Notificacao:
+      type: object
+      properties:
+        categoria:
+          type: string
+        titulo:
+          type: string
+        mensagem:
+          type: string
+        nome:
+          type: string
+        email:
+          type: string
+        tell:
+          type: string
+
+    Agendamento:
+      type: object
+      properties:
+        paciente:
+          type: string
+        consulta:
+          type: string
+        responsavel:
+          type: string
+        dataConsulta:
+          type: string
+        reagendavel:
+          type: boolean
+
+    Triagem:
+      type: object
+      properties:
+        paciente:
+          type: string
+        responsavel:
+          type: string
+        anamnese:
+          $ref: '#/components/schemas/Anamnese'
+        avaliacao:
+          $ref: '#/components/schemas/Avaliacao'
+
+    Anamnese:
+      type: object
+      properties:
+        descricao:
+          type: string
+        dores:
+          type: string
+        diabete:
+          type: boolean
+        pressaoAlta:
+          type: boolean
+        coracao:
+          type: boolean
+        historicoFamilia:
+          type: string
+        membroFamilia:
+          type: string
+
+    Avaliacao:
+      type: object
+      properties:
+        pressao:
+          type: string
+        oxigenacao:
+          type: string
+        quadroClinico:
+          type: string
+        risco:
+          type: string

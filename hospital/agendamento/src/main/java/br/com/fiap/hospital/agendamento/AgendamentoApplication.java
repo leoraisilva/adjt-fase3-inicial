@@ -5,7 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {
+        "br.com.fiap.hospital.historico",
+        "br.com.fiap.hospital.usuario",
+        "br.com.fiap.hospital.agendamento",
+        "br.com.fiap.hospital.mensageria"
+})
 @EnableJpaRepositories(basePackages = {"br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.repository",
                                         "br.com.fiap.hospital.agendamento.infra.adapter.outbound.persistent.repository"})
 @EntityScan(basePackages = {"br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.entity",

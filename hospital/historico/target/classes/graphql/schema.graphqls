@@ -1,135 +1,68 @@
 type Historico {
-    idHistorico : String!
-    usuario : Usuario!
-    agendamento : Agendamento
-    notificacao : Notificacao
+    idHistorico : String
+    paciente : Usuario
+    consulta : Agendamento
+    mensagem : Notificacao
     triagem : Triagem
-    resultado : String
-}
-
-input inputHistorico {
-    usuario : inputUsuario!
-    agendamento : inputAgendamento
-    notificacao : inputNotificacao
-    triagem : inputTriagem
+    dataRegistro: String
     resultado : String
 }
 
 type Usuario {
-    idUsuario : String!
-    nome : String!
-    username : String!
+    nome : String
+    username : String
     senha : String
-    dataNascimento : String!
-    tipo : String!
-    CPF : String!
-    email : String!
-    tell : String
-}
-
-input inputUsuario {
-    idUsuario : String!
-    nome : String!
-    username : String!
-    senha : String
-    dataNascimento : String!
-    tipo : String!
-    CPF : String!
-    email : String!
+    dataNascimento : String
+    tipo : String
+    CPF : String
+    email : String
     tell : String
 }
 
 type Notificacao {
-    idMensagem : String!
-    categoria : String!
-    titulo : String!
-    mensagem : String!
-    nome : String!
-    email : String!
-    tell : String!
-}
-
-input inputNotificacao {
-    idMensagem : String!
-    categoria : String!
-    titulo : String!
-    mensagem : String!
-    nome : String!
-    email : String!
-    tell : String!
+    idMensagem : String
+    categoria : String
+    titulo : String
+    mensagem : String
+    nome : String
+    email : String
+    tell : String
 }
 
 type Agendamento {
-    idAgendamento : String!
-    paciente : String!
-    consulta : String!
-    responsavel : String!
-    dataConsulta : String!
-    reagendavel : Boolean!
+    idAgendamento : String
+    paciente : String
+    consulta : String
+    responsavel : String
+    dataConsulta : String
+    reagendavel : Boolean
 }
-
-input inputAgendamento {
-    idAgendamento : String!
-    paciente : String!
-    consulta : String!
-    responsavel : String!
-    dataConsulta : String!
-    reagendavel : String!
-}
-
 
 type Triagem {
-    paciente : String!
-    responsavel : String!
-    anamnese : Anamnese!
-    avaliacao : Avaliacao!
-}
-
-input inputTriagem {
-    paciente : String!
-    responsavel : String!
-    anamnese : inputAnamnese!
-    avaliacao : inputAvaliacao!
+    idTriagem : String
+    paciente : String
+    responsavel : String
+    anamnese : Anamnese
+    avaliacao : Avaliacao
 }
 
 type Anamnese {
-    descricao : String!
-    dores : String!
-    diabete : Boolean!
-    pressaoAlta : Boolean!
-    coracao : Boolean!
-    historicoFamilia : String!
-    membroFamilia : String!
+    descricao : String
+    dores : String
+    diabete : Boolean
+    pressaoAlta : Boolean
+    coracao : Boolean
+    historicoFamilia : String
+    membroFamilia : String
 }
 
 type Avaliacao {
-    pressao : String!
-    oxigenacao : String!
-    quadroClinico : String!
-    risco : String!
-}
-
-input inputAnamnese {
-    descricao : String!
-    dores : String!
-    diabete : Boolean!
-    pressaoAlta : Boolean!
-    coracao : Boolean!
-    historicoFamilia : String!
-    membroFamilia : String!
-}
-
-input inputAvaliacao {
-    pressao : String!
-    oxigenacao : String!
-    quadroClinico : String!
-    risco : String!
+    pressao : String
+    oxigenacao : String
+    quadroClinico : String
+    risco : String
 }
 
 type Query {
     acessarHistorico(paciente: String!) : [Historico!]!
-}
-
-type Mutation {
-    registrarHistorico (input : inputHistorico) : Historico!
 }

@@ -46,9 +46,9 @@ public class TriagemImpRepository implements TriagemRepository {
 
         var avalicaoDTO = new AvaliacaoDTO(
                 avaliacaoEntity.getIdAvaliacao(),
-                avaliacaoEntity.getIdAvaliacao(),
-                avaliacaoEntity.getOxigenacao(),
                 avaliacaoEntity.getPressao(),
+                avaliacaoEntity.getOxigenacao(),
+                avaliacaoEntity.getQuadroClinico(),
                 avaliacaoEntity.getRisco()
         );
 
@@ -80,9 +80,9 @@ public class TriagemImpRepository implements TriagemRepository {
         triagemEntity = triagemJPARepository.save(triagemEntity);
 
         var triagemDTO = new TriagemDTO(
-                triagem.getIdTriagem(),
-                triagem.getPaciente(),
-                triagem.getResponsavel(),
+                triagemEntity.getIdTriagem(),
+                triagemEntity.getPaciente(),
+                triagemEntity.getResponsavel(),
                 anamneseDTO,
                 avalicaoDTO
         );
@@ -124,9 +124,9 @@ public class TriagemImpRepository implements TriagemRepository {
 
         var avalicaoDTO = new AvaliacaoDTO(
                 avaliacaoEntity.getIdAvaliacao(),
-                avaliacaoEntity.getIdAvaliacao(),
-                avaliacaoEntity.getOxigenacao(),
                 avaliacaoEntity.getPressao(),
+                avaliacaoEntity.getOxigenacao(),
+                avaliacaoEntity.getQuadroClinico(),
                 avaliacaoEntity.getRisco()
         );
 
@@ -161,9 +161,9 @@ public class TriagemImpRepository implements TriagemRepository {
         triagemJPARepository.save(triagemEntity);
 
         var triagemDTO = new TriagemDTO(
-                triagem.getIdTriagem(),
-                triagem.getPaciente(),
-                triagem.getResponsavel(),
+                triagemEntity.getIdTriagem(),
+                triagemEntity.getPaciente(),
+                triagemEntity.getResponsavel(),
                 anamneseDTO,
                 avalicaoDTO
         );
@@ -188,7 +188,7 @@ public class TriagemImpRepository implements TriagemRepository {
                 LocalDate.now().toString(),
                 "Alterar a triagem para usuario " + usuarioDTO.username()
         );
-
+        mensageria.sendHistorico(mensagemEnviada);
         return triagemMapper.toDomain(triagemEntity, avaliacaoEntity, anamneseEntity);
     }
 
