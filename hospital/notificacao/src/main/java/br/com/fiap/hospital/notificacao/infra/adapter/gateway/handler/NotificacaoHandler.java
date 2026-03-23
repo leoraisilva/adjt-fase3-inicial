@@ -33,17 +33,21 @@ public class NotificacaoHandler implements NotificacaoRepository {
 
     @Override
     public Notificacao consulta(Notificacao notificacao) {
-        var entity = new NotificacaoEntity();
-        entity.setIdMensagem(UUID.randomUUID().toString());
-        entity.setCategoria(notificacao.getCategoria().name());
-        entity.setEmail(notificacao.getEmail());
-        entity.setNome(notificacao.getNome());
-        entity.setTell(notificacao.getTell());
+        var entity = new NotificacaoEntity(
+                notificacao.getCategoria().name(),
+                "",
+                "",
+                notificacao.getNome(),
+                notificacao.getEmail(),
+                notificacao.getTell()
+        );
         entity.setTitulo("Consulta " + entity.getCategoria() + " marcado para " + entity.getNome() + "!!");
         entity.setMensagem("Bom Dia " + entity.getNome() + "!\n" +
                 "O motivo do nosso Contato é referente a consulta " + entity.getCategoria() + ", estamos confirmando.\n" +
                 "Agradecemos e aguardamos ansiosamente pela consulta!!");
+
         entity = notificacaoJpaRepository.save(entity);
+
         var mensagemNotificacao = new NotificacaoDTO(
                 entity.getIdMensagem(),
                 entity.getCategoria(),
@@ -73,22 +77,28 @@ public class NotificacaoHandler implements NotificacaoRepository {
                 LocalDate.now().toString(),
                 "Enviando Mensagem " + notificacao.getCategoria().toString() + " ao usuario " + usuarioDTO.username()
         );
+        System.out.println(entity);
         mensageria.sendHistorico(mensagemEnviada);
         return mapper.entityToDomain(entity);
     }
 
     @Override
     public Notificacao retorno(Notificacao notificacao) {
-        var entity = new NotificacaoEntity();
-        entity.setIdMensagem(UUID.randomUUID().toString());
-        entity.setCategoria(Categoria.RETORNO.name());
-        entity.setEmail(notificacao.getEmail());
-        entity.setNome(notificacao.getNome());
-        entity.setTell(notificacao.getTell());
+        var entity = new NotificacaoEntity(
+                notificacao.getCategoria().name(),
+                "",
+                "",
+                notificacao.getNome(),
+                notificacao.getEmail(),
+                notificacao.getTell()
+        );
         entity.setTitulo("Retorno Consulta de " + entity.getNome() + "!!");
         entity.setMensagem("Bom Dia " + entity.getNome() + "!\n" +
                 "O motivo do nosso Contato é referente a retorno da consulta feita. \n" +
                 "Agradecemos e aguardamos ansiosamente pela retorno!!");
+
+        entity = notificacaoJpaRepository.save(entity);
+
         var mensagemNotificacao = new NotificacaoDTO(
                 entity.getIdMensagem(),
                 entity.getCategoria(),
@@ -124,18 +134,22 @@ public class NotificacaoHandler implements NotificacaoRepository {
 
     @Override
     public Notificacao cancelamento(Notificacao notificacao) {
-        var entity = new NotificacaoEntity();
-        entity.setIdMensagem(UUID.randomUUID().toString());
-        entity.setCategoria(Categoria.RETORNO.name());
-        entity.setEmail(notificacao.getEmail());
-        entity.setNome(notificacao.getNome());
-        entity.setTell(notificacao.getTell());
+        var entity = new NotificacaoEntity(
+                notificacao.getCategoria().name(),
+                "",
+                "",
+                notificacao.getNome(),
+                notificacao.getEmail(),
+                notificacao.getTell()
+        );
         entity.setTitulo("Cancelamento Consulta de " + entity.getNome() + "!!");
         entity.setMensagem("Bom Dia " + entity.getNome() + "!\n" +
                 "O motivo do nosso Contato é referente ao Cancelametno da consulta feita. \n" +
                 "Consulta Cancelado com sucesso" +
                 "Agradecemos e aguardamos ansiosamente pelas proximas consultas!!");
+
         entity = notificacaoJpaRepository.save(entity);
+
         var mensagemNotificacao = new NotificacaoDTO(
                 entity.getIdMensagem(),
                 entity.getCategoria(),
@@ -171,17 +185,22 @@ public class NotificacaoHandler implements NotificacaoRepository {
 
     @Override
     public Notificacao triagem(Notificacao notificacao) {
-        var entity = new NotificacaoEntity();
-        entity.setIdMensagem(UUID.randomUUID().toString());
-        entity.setCategoria(Categoria.RETORNO.name());
-        entity.setEmail(notificacao.getEmail());
-        entity.setNome(notificacao.getNome());
-        entity.setTell(notificacao.getTell());
+        var entity = new NotificacaoEntity(
+                notificacao.getCategoria().name(),
+                "",
+                "",
+                notificacao.getNome(),
+                notificacao.getEmail(),
+                notificacao.getTell()
+        );
         entity.setTitulo("Triagem para " + entity.getNome() + "!!");
         entity.setMensagem("Bom Dia " + entity.getNome() + "!\n" +
                 "O motivo do nosso Contato é referente a Triagem que precisa ser feito. \n" +
                 "Gostaria que procurasse posto de saúde ou entrar em contato com a Enfermagem" +
                 "Agradecemos e aguardamos a sua resposta!!");
+
+        entity = notificacaoJpaRepository.save(entity);
+
         var mensagemNotificacao = new NotificacaoDTO(
                 entity.getIdMensagem(),
                 entity.getCategoria(),

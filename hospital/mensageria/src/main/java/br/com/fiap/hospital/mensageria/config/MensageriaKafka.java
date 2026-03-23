@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Configuration
 public class MensageriaKafka {
-    private final String bootstrapServers = "kafka:9092";
+    private final String bootstrapServers = "kafka:29092";
     @Bean
     public ProducerFactory<String, Object> producerFactory() {
         Map<String, Object> config = new HashMap<>();

@@ -177,7 +177,7 @@ public class AgendamentoImplRepository implements AgendamentoRepository {
                 usuarioDTO.username(),
                 usuarioDTO.email(),
                 usuarioDTO.tell(),
-                agendamentoEntity.isReagendavel() ? Categoria.EXAME.name() : Categoria.CONSULTA.name()
+                agendamentoEntity.isReagendavel() ? Categoria.RETORNO.name() : Categoria.CONSULTA.name()
         );
 
         evento.enviar(eventoMensagem);

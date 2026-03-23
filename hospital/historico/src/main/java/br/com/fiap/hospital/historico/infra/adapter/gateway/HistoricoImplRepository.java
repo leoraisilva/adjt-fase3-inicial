@@ -83,12 +83,12 @@ public class HistoricoImplRepository implements HistoricoRepository {
                             ? triagemMapper.toDomain(triagem, avaliacao, anamnese)
                             : null;
 
-                    NotificacaoEntity notificacao = null;
+                    NotificacaoEntity mensagem = null;
                     if (h.getMensagem() != null) {
-                        notificacao = notificacaoRepository.findById(h.getMensagem()).orElse(null);
+                        mensagem = notificacaoRepository.findById(h.getMensagem()).orElse(null);
                     }
-                    var notificacaoDomain = notificacao != null
-                            ? mensagemMapper.entityToDomain(notificacao)
+                    var mensagemDomain = mensagem != null
+                            ? mensagemMapper.entityToDomain(mensagem)
                             : null;
 
                     AgendamentoEntity consulta = null;
@@ -103,7 +103,7 @@ public class HistoricoImplRepository implements HistoricoRepository {
                             h,
                             usuarioDomain,
                             consultaDomain,
-                            notificacaoDomain,
+                            mensagemDomain,
                             triagemDomain
                     );
                 })
@@ -122,9 +122,9 @@ public class HistoricoImplRepository implements HistoricoRepository {
                 ? triagemRepository.findById(historico.triagem().idTriagem()).orElse(null)
                 : null;
 
-        var notificacao = historico.notificacao() != null &&
-                historico.notificacao().idMensagem() != null
-                ? notificacaoRepository.findById(historico.notificacao().idMensagem()).orElse(null)
+        var notificacao = historico.mensagem() != null &&
+                historico.mensagem().idMensagem() != null
+                ? notificacaoRepository.findById(historico.mensagem().idMensagem()).orElse(null)
                 : null;
 
         var consulta = historico.agendamento() != null &&
@@ -135,7 +135,7 @@ public class HistoricoImplRepository implements HistoricoRepository {
         var historicoEntity = new HistoricoEntity(
                 historico.usuario().username(),
                 consulta != null ? historico.agendamento().idAgendamento() : null,
-                notificacao != null ? historico.notificacao().idMensagem(): null,
+                notificacao != null ? historico.mensagem().idMensagem(): null,
                 triagem != null ? historico.triagem().idTriagem() : null,
                 historico.dataRegistro(),
                 historico.resultado()

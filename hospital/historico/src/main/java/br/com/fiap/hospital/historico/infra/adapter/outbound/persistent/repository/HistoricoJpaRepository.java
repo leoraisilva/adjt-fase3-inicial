@@ -9,5 +9,4 @@ import java.util.Optional;
 
 @Repository
 public interface HistoricoJpaRepository extends JpaRepository<HistoricoEntity, String> {
-    Optional<HistoricoEntity> findByPaciente (String paciente);
 }
