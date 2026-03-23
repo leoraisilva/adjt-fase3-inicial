@@ -6,8 +6,10 @@ option java_multiple_files = true;
 option java_package = "br.com.fiap.hospital.notificacao";
 
 service Notificacao {
-    rpc Enviar (EnviarRequest) returns (Response);
-    rpc Receber (ReceberRequest) returns (Response);
+    rpc Consulta (EnviarRequest) returns (Response);
+    rpc Triagem (EnviarRequest) returns (Response);
+    rpc Retorno (ReceberRequest) returns (Response);
+    rpc Cancelamento (EnviarRequest) returns (Response);
 }
 
 message EnviarRequest {

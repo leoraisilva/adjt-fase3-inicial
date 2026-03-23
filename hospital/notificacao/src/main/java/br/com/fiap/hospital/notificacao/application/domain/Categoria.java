@@ -5,5 +5,5 @@ public enum Categoria {
     CONSULTA,
     RETORNO,
     EXAME,
-    RESULTADO
+    CANCELADO
 }

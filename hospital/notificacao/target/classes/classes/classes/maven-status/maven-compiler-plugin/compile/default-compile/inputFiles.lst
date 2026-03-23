@@ -15,6 +15,7 @@ C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\notificacao\src
 C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\notificacao\src\main\java\br\com\fiap\hospital\notificacao\infra\adapter\gateway\handler\NotificacaoHandler.java
 C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\notificacao\target\generated-sources\protobuf\java\br\com\fiap\hospital\notificacao\EnviarRequestOrBuilder.java
 C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\notificacao\target\generated-sources\protobuf\java\br\com\fiap\hospital\notificacao\ReceberRequestOrBuilder.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\notificacao\src\main\java\br\com\fiap\hospital\notificacao\infra\adapter\consumer\NotificacaoConsumer.java
 C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\notificacao\src\main\java\br\com\fiap\hospital\notificacao\NotificacaoApplication.java
 C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\notificacao\src\main\java\br\com\fiap\hospital\notificacao\infra\config\NotificacaoServerConfiguracao.java
 C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\notificacao\src\main\java\br\com\fiap\hospital\notificacao\application\domain\Notificacao.java

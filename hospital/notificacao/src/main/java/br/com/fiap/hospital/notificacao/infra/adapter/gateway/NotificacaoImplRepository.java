@@ -17,15 +17,29 @@ public class NotificacaoImplRepository extends NotificacaoGrpc.NotificacaoImplBa
     }
 
     @Override
-    public void enviar(EnviarRequest request, StreamObserver<Response> responseObserver) {
-        var response = handler.enviar(mapper.enviarRequestToDomain(request));
+    public void consulta(EnviarRequest request, StreamObserver<Response> responseObserver) {
+        var response = handler.consulta(mapper.enviarRequestToDomain(request));
         responseObserver.onNext(mapper.domainToResponse(response));
         responseObserver.onCompleted();
     }
 
     @Override
-    public void receber(ReceberRequest request, StreamObserver<Response> responseObserver) {
-        var response = handler.receber(mapper.receberRequestToDomain(request));
+    public void triagem(EnviarRequest request, StreamObserver<Response> responseObserver) {
+        var response = handler.triagem(mapper.enviarRequestToDomain(request));
+        responseObserver.onNext(mapper.domainToResponse(response));
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void retorno(ReceberRequest request, StreamObserver<Response> responseObserver) {
+        var response = handler.retorno(mapper.receberRequestToDomain(request));
+        responseObserver.onNext(mapper.domainToResponse(response));
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void cancelamento(EnviarRequest request, StreamObserver<Response> responseObserver) {
+        var response = handler.cancelamento(mapper.enviarRequestToDomain(request));
         responseObserver.onNext(mapper.domainToResponse(response));
         responseObserver.onCompleted();
     }

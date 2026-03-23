@@ -22,7 +22,6 @@
 		<module>triagem</module>
 		<module>historico</module>
 		<module>mensageria</module>
-		<module>evento</module>
 	</modules>
 	<packaging>pom</packaging>
 

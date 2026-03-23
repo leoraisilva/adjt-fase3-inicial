@@ -7,10 +7,13 @@ import br.com.fiap.hospital.agendamento.application.useCase.outbound.Agendamento
 import br.com.fiap.hospital.agendamento.infra.adapter.inbound.mapper.IAgendamentoMapper;
 import br.com.fiap.hospital.agendamento.infra.adapter.outbound.persistent.entity.AgendamentoEntity;
 import br.com.fiap.hospital.agendamento.infra.adapter.outbound.persistent.repository.AgendamentoJPARepository;
+import br.com.fiap.hospital.mensageria.event.MensagemDTO;
+import br.com.fiap.hospital.mensageria.producer.EventoProducer;
 import br.com.fiap.hospital.mensageria.event.AgendamentoDTO;
 import br.com.fiap.hospital.mensageria.event.HistoricoDTO;
 import br.com.fiap.hospital.mensageria.event.UsuarioDTO;
 import br.com.fiap.hospital.mensageria.producer.MensageriaEventProducer;
+import br.com.fiap.hospital.notificacao.application.domain.Categoria;
 import br.com.fiap.hospital.usuario.infra.adapter.outbound.persistent.repository.UsuarioJPARepository;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +27,15 @@ public class AgendamentoImplRepository implements AgendamentoRepository {
     private final AgendamentoFactory factory;
     private final MensageriaEventProducer mensageria;
     private final UsuarioJPARepository usuarioJPARepository;
+    private final EventoProducer evento;
 
-    public AgendamentoImplRepository(AgendamentoJPARepository jpaRepository, IAgendamentoMapper mapper, AgendamentoFactory factory, MensageriaEventProducer mensageria, UsuarioJPARepository usuarioJPARepository) {
+    public AgendamentoImplRepository(AgendamentoJPARepository jpaRepository, IAgendamentoMapper mapper, AgendamentoFactory factory, MensageriaEventProducer mensageria, UsuarioJPARepository usuarioJPARepository, EventoProducer evento) {
         this.jpaRepository = jpaRepository;
         this.mapper = mapper;
         this.factory = factory;
         this.mensageria = mensageria;
         this.usuarioJPARepository = usuarioJPARepository;
+        this.evento = evento;
     }
 
     @Override
@@ -65,7 +70,15 @@ public class AgendamentoImplRepository implements AgendamentoRepository {
                 LocalDate.now().toString(),
                 "Criar agendamento para usuario " + usuarioDTO.username()
         );
+        var eventoMensagem = new MensagemDTO(
+                usuarioDTO.username(),
+                usuarioDTO.email(),
+                usuarioDTO.tell(),
+                agendamentoEntity.isTriagem() ?  Categoria.CONSULTA.name() : Categoria.TRIAGEM.name()
+        );
+
         mensageria.sendHistorico(mensagemEnviada);
+        evento.enviar(eventoMensagem);
         return mapper.toDomain(agendamentoEntity);
     }
 
@@ -108,7 +121,16 @@ public class AgendamentoImplRepository implements AgendamentoRepository {
                 LocalDate.now().toString(),
                 "Cancelar agendamento para usuario " + usuarioDTO.username()
         );
+
+        var eventoMensagem = new MensagemDTO(
+                usuarioDTO.username(),
+                usuarioDTO.email(),
+                usuarioDTO.tell(),
+                Categoria.CANCELADO.name()
+        );
+
         mensageria.sendHistorico(mensagemEnviada);
+        evento.enviar(eventoMensagem);
         return mapper.toDomain(jpaRepository.save(agendamentoEntity));
     }
 
@@ -150,6 +172,15 @@ public class AgendamentoImplRepository implements AgendamentoRepository {
                 LocalDate.now().toString(),
                 "Alterar agendamento para usuario " + usuarioDTO.username()
         );
+
+        var eventoMensagem = new MensagemDTO(
+                usuarioDTO.username(),
+                usuarioDTO.email(),
+                usuarioDTO.tell(),
+                agendamentoEntity.isReagendavel() ? Categoria.EXAME.name() : Categoria.CONSULTA.name()
+        );
+
+        evento.enviar(eventoMensagem);
         mensageria.sendHistorico(mensagemEnviada);
         return mapper.toDomain(jpaRepository.save(agendamentoEntity));
     }

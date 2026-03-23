@@ -1,5 +1,6 @@
 package br.com.fiap.hospital.triagem.infra.config;
 
+import br.com.fiap.hospital.mensageria.producer.EventoProducer;
 import br.com.fiap.hospital.mensageria.producer.MensageriaEventProducer;
 import br.com.fiap.hospital.triagem.application.domain.*;
 import br.com.fiap.hospital.triagem.application.service.TriagemService;
@@ -61,7 +62,7 @@ public class TriagemConfig {
         return new TriagemService(repository);
     }
     @Bean
-    TriagemRepository repository (AnamneseJPARepository anamneseJPARepository, AvaliacaoJPARepository avaliacaoJPARepository, TriagemJPARepository triagemJPARepository, UsuarioJPARepository usuarioJPARepository, ITriagemMapper triagemMapper, MensageriaEventProducer mensageria) {
-        return new TriagemImpRepository(anamneseJPARepository, avaliacaoJPARepository, triagemJPARepository, usuarioJPARepository, triagemMapper, mensageria);
+    TriagemRepository repository (AnamneseJPARepository anamneseJPARepository, AvaliacaoJPARepository avaliacaoJPARepository, TriagemJPARepository triagemJPARepository, UsuarioJPARepository usuarioJPARepository, ITriagemMapper triagemMapper, MensageriaEventProducer mensageria, EventoProducer evento) {
+        return new TriagemImpRepository(anamneseJPARepository, avaliacaoJPARepository, triagemJPARepository, usuarioJPARepository, triagemMapper, mensageria, evento);
     }
 }

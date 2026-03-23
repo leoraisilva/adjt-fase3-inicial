@@ -1,7 +1,10 @@
 package br.com.fiap.hospital.triagem.infra.adapter.gateway;
 
+import br.com.fiap.hospital.mensageria.event.MensagemDTO;
+import br.com.fiap.hospital.mensageria.producer.EventoProducer;
 import br.com.fiap.hospital.mensageria.event.*;
 import br.com.fiap.hospital.mensageria.producer.MensageriaEventProducer;
+import br.com.fiap.hospital.notificacao.application.domain.Categoria;
 import br.com.fiap.hospital.triagem.application.domain.Triagem;
 import br.com.fiap.hospital.triagem.application.useCase.outbound.TriagemRepository;
 import br.com.fiap.hospital.triagem.infra.adapter.inbound.mapper.ITriagemMapper;
@@ -24,14 +27,16 @@ public class TriagemImpRepository implements TriagemRepository {
     private final UsuarioJPARepository usuarioJPARepository;
     private final ITriagemMapper triagemMapper;
     private final MensageriaEventProducer mensageria;
+    private final EventoProducer evento;
 
-    public TriagemImpRepository(AnamneseJPARepository anamneseJPARepository, AvaliacaoJPARepository avaliacaoJPARepository, TriagemJPARepository triagemJPARepository, UsuarioJPARepository usuarioJPARepository, ITriagemMapper triagemMapper, MensageriaEventProducer mensageria) {
+    public TriagemImpRepository(AnamneseJPARepository anamneseJPARepository, AvaliacaoJPARepository avaliacaoJPARepository, TriagemJPARepository triagemJPARepository, UsuarioJPARepository usuarioJPARepository, ITriagemMapper triagemMapper, MensageriaEventProducer mensageria, EventoProducer evento) {
         this.anamneseJPARepository = anamneseJPARepository;
         this.avaliacaoJPARepository = avaliacaoJPARepository;
         this.triagemJPARepository = triagemJPARepository;
         this.usuarioJPARepository = usuarioJPARepository;
         this.triagemMapper = triagemMapper;
         this.mensageria = mensageria;
+        this.evento = evento;
     }
 
     @Override
@@ -108,7 +113,15 @@ public class TriagemImpRepository implements TriagemRepository {
                 "Criar a triagem para usuario " + usuarioDTO.username()
         );
 
+        var eventoMensagem = new MensagemDTO(
+                usuarioDTO.username(),
+                usuarioDTO.email(),
+                usuarioDTO.tell(),
+                Categoria.RETORNO.name()
+        );
+
         mensageria.sendHistorico(mensagemEnviada);
+        evento.enviar(eventoMensagem);
         return triagemMapper.toDomain(triagemEntity, avaliacaoEntity, anamneseEntity);
     }
 

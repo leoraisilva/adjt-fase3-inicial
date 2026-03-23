@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Configuration
 public class MensageriaKafka {
-    private final String bootstrapServers = "localhost:9092";
+    private final String bootstrapServers = "kafka:9092";
     @Bean
     public ProducerFactory<String, Object> producerFactory() {
         Map<String, Object> config = new HashMap<>();
@@ -40,7 +40,7 @@ public class MensageriaKafka {
         Map<String, Object> config = new HashMap<>();
 
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "meu-grupo");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "meu-historico");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
@@ -57,14 +57,21 @@ public class MensageriaKafka {
                 new ConcurrentKafkaListenerContainerFactory<>();
 
         factory.setConsumerFactory(consumerFactory());
-
         return factory;
     }
 
     @Bean
     public NewTopic orderCreatedTopic() {
         return TopicBuilder.name("mensageria-historico")
-                .partitions(3)
+                .partitions(10)
+                .replicas(1)
+                .build();
+    }
+
+    @Bean
+    public NewTopic orderEventoCreatedTopic() {
+        return TopicBuilder.name("evento-mensagem")
+                .partitions(10)
                 .replicas(1)
                 .build();
     }

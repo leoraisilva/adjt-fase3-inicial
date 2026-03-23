@@ -46,12 +46,15 @@ public final class NotificacaoOuterClass {
       "\n\004tell\030\003 \001(\t\"~\n\010Response\022\022\n\nidMensagem\030\001" +
       " \001(\t\022\021\n\tcategoria\030\002 \001(\t\022\016\n\006titulo\030\003 \001(\t\022" +
       "\020\n\010mensagem\030\004 \001(\t\022\014\n\004nome\030\005 \001(\t\022\r\n\005email" +
-      "\030\006 \001(\t\022\014\n\004tell\030\007 \001(\t2\211\001\n\013Notificacao\022;\n\006" +
-      "Enviar\022\032.notificacao.EnviarRequest\032\025.not" +
-      "ificacao.Response\022=\n\007Receber\022\033.notificac" +
-      "ao.ReceberRequest\032\025.notificacao.Response" +
-      "B$\n br.com.fiap.hospital.notificacaoP\001b\006" +
-      "proto3"
+      "\030\006 \001(\t\022\014\n\004tell\030\007 \001(\t2\214\002\n\013Notificacao\022=\n\010" +
+      "Consulta\022\032.notificacao.EnviarRequest\032\025.n" +
+      "otificacao.Response\022<\n\007Triagem\022\032.notific" +
+      "acao.EnviarRequest\032\025.notificacao.Respons" +
+      "e\022=\n\007Retorno\022\033.notificacao.ReceberReques" +
+      "t\032\025.notificacao.Response\022A\n\014Cancelamento" +
+      "\022\032.notificacao.EnviarRequest\032\025.notificac" +
+      "ao.ResponseB$\n br.com.fiap.hospital.noti" +
+      "ficacaoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
