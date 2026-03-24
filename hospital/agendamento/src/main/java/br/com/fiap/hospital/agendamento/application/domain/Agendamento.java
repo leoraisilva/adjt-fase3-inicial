@@ -1,0 +1,99 @@
+package br.com.fiap.hospital.agendamento.application.domain;
+
+public class Agendamento {
+    private final String idAgendamento;
+    private final String paciente;
+    private final ConsultaType consulta;
+    private final String responsavel;
+    private final String dataConsulta;
+    private final boolean reagendavel;
+    private final boolean triagem;
+
+    public Agendamento(AgendamentoBuilder builder) {
+        this.idAgendamento = builder.idAgendamento;
+        this.paciente = builder.paciente;
+        this.consulta = builder.consulta;
+        this.responsavel = builder.responsavel;
+        this.dataConsulta = builder.dataConsulta;
+        this.reagendavel = builder.reagendavel;
+        this.triagem = builder.triagem;
+    }
+
+    public String getIdAgendamento() {
+        return idAgendamento;
+    }
+
+    public String getPaciente() {
+        return paciente;
+    }
+
+    public ConsultaType getConsulta() {
+        return consulta;
+    }
+
+    public String getResponsavel() {
+        return responsavel;
+    }
+
+    public String getDataConsulta() {
+        return dataConsulta;
+    }
+
+    public boolean isReagendavel() {
+        return reagendavel;
+    }
+
+    public boolean isTriagem() {
+        return triagem;
+    }
+
+    public static class AgendamentoBuilder {
+        private String idAgendamento;
+        private String paciente;
+        private ConsultaType consulta;
+        private String responsavel;
+        private String dataConsulta;
+        private boolean reagendavel;
+        private boolean triagem;
+
+        public AgendamentoBuilder withId (String idAgendamento) {
+            this.idAgendamento = idAgendamento;
+            return this;
+        }
+
+        public AgendamentoBuilder withPaciente (String paciente) {
+            this.paciente = paciente;
+            return this;
+        }
+
+        public AgendamentoBuilder withConsulta (ConsultaType consulta) {
+            this.consulta = consulta;
+            return this;
+        }
+
+        public AgendamentoBuilder withResponsavel (String responsavel) {
+            this.responsavel = responsavel;
+            return this;
+        }
+
+        public AgendamentoBuilder withDataConsulta (String dataConsulta) {
+            this.dataConsulta = dataConsulta;
+            return this;
+        }
+
+        public AgendamentoBuilder withReagendavel (boolean reagendavel) {
+            this.reagendavel = reagendavel;
+            return this;
+        }
+
+        public AgendamentoBuilder withTriagem (boolean triagem) {
+            this.triagem = triagem;
+            return this;
+        }
+
+        public Agendamento build () {
+            return new Agendamento(this);
+        }
+
+    }
+}

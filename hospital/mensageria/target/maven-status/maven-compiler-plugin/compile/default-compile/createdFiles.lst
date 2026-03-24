@@ -1,0 +1,11 @@
+br\com\fiap\hospital\mensageria\event\AvaliacaoDTO.class
+br\com\fiap\hospital\mensageria\event\AgendamentoDTO.class
+br\com\fiap\hospital\mensageria\event\NotificacaoDTO.class
+br\com\fiap\hospital\mensageria\config\MensageriaKafka.class
+br\com\fiap\hospital\mensageria\event\UsuarioDTO.class
+br\com\fiap\hospital\mensageria\producer\EventoProducer.class
+br\com\fiap\hospital\mensageria\event\AnamneseDTO.class
+br\com\fiap\hospital\mensageria\event\HistoricoDTO.class
+br\com\fiap\hospital\mensageria\event\TriagemDTO.class
+br\com\fiap\hospital\mensageria\event\MensagemDTO.class
+br\com\fiap\hospital\mensageria\producer\MensageriaEventProducer.class

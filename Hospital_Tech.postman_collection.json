@@ -1,0 +1,567 @@
+{
+  "info": {
+    "_postman_id": "0088e158-5c9b-4dff-96bf-01d2adddb17a",
+    "name": "Hospital_Tech",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32979420"
+  },
+  "item": [
+    {
+      "name": "usuario",
+      "item": [
+        {
+          "name": "login",
+          "item": [
+            {
+              "name": "createUsuario",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Douglas Sanchez\", \r\n    \"username\": \"dsanchez\", \r\n    \"senha\": \"senha123\", \r\n    \"dataNascimento\": \"2001-08-29\", \r\n    \"tipo\": 0, \r\n    \"CPF\": \"78528423050\", \r\n    \"email\": \"dsanchez@exemplo.com\", \r\n    \"tell\": \"11987651234\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8082/hospital/usuario/api/v1/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8082",
+                  "path": [
+                    "hospital",
+                    "usuario",
+                    "api",
+                    "v1",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "login",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"username\" : \"cgomes\",\r\n    \"password\" : \"senha123\"\r\n}   ",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8082/hospital/usuario/api/v1/auth/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8082",
+                  "path": [
+                    "hospital",
+                    "usuario",
+                    "api",
+                    "v1",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "200",
+          "item": [
+            {
+              "name": "getUsuario",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImNnb21lcyIsImV4cCI6MTc3MzYzMDI2Mn0.YmjPkarVpvQRtrW8J6G9-_9u3JMPziQVoS_KBok_2Vc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8082/hospital/usuario/api/v1/get/cgomes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8082",
+                  "path": [
+                    "hospital",
+                    "usuario",
+                    "api",
+                    "v1",
+                    "get",
+                    "cgomes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "listUsuario",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImZoY2FyZG9zbyIsImV4cCI6MTc3NDIzNjEwNX0.14ESUC_cFHmeZhJtGO5pi0nMCE3SDv-23soZyiIESAU",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8082/hospital/usuario/api/v1/list",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8082",
+                  "path": [
+                    "hospital",
+                    "usuario",
+                    "api",
+                    "v1",
+                    "list"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "updateUsuario",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImNnb21lcyIsImV4cCI6MTc3MzYzMDI2Mn0.YmjPkarVpvQRtrW8J6G9-_9u3JMPziQVoS_KBok_2Vc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Carlos Gomes\", \r\n    \"username\": \"cgomes\", \r\n    \"senha\": \"senha123\", \r\n    \"dataNascimento\": \"2009-10-12\", \r\n    \"tipo\": 1, \r\n    \"CPF\": \"12345678980\", \r\n    \"email\": \"cgomes@exemplo.com\", \r\n    \"tell\": \"11987651234\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8082/hospital/usuario/api/v1/update",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8082",
+                  "path": [
+                    "hospital",
+                    "usuario",
+                    "api",
+                    "v1",
+                    "update"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "deleteUsuario",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImNnb21lcyIsImV4cCI6MTc3MzYzMDI2Mn0.YmjPkarVpvQRtrW8J6G9-_9u3JMPziQVoS_KBok_2Vc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/hospital/usuario/api/v1/delete/cgomes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "hospital",
+                    "usuario",
+                    "api",
+                    "v1",
+                    "delete",
+                    "cgomes"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "agendamento",
+      "item": [
+        {
+          "name": "200",
+          "item": [
+            {
+              "name": "agendar",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImRzYW5jaGV6IiwiZXhwIjoxNzc0MjM3MTEwfQ._92FLGu5Oa2EAMX2A8u8c308dmGoSu1chpZCw8Q3ck0",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"paciente\": \"dsanchez\", \r\n    \"consulta\": 0, \r\n    \"responsavel\": \"cgomes\", \r\n    \"dataConsulta\": \"2026-03-12\", \r\n    \"reagendavel\": true,\r\n    \"triagem\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8083/hospital/agendamento/api/v1/agendar",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "hospital",
+                    "agendamento",
+                    "api",
+                    "v1",
+                    "agendar"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "buscarConsulta",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImZoY2FyZG9zbyIsImV4cCI6MTc3NDIzNzA4Nn0.n7tvtdIlmxcMZrpDAjK3z0xLf9JABjxicsAoke8O3UI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8083/hospital/agendamento/api/v1/buscarConsulta/0a4141b0-b57c-490c-8b00-457a05500b06",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "hospital",
+                    "agendamento",
+                    "api",
+                    "v1",
+                    "buscarConsulta",
+                    "0a4141b0-b57c-490c-8b00-457a05500b06"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "verificar",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImZoY2FyZG9zbyIsImV4cCI6MTc3NDIzNzA4Nn0.n7tvtdIlmxcMZrpDAjK3z0xLf9JABjxicsAoke8O3UI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8083/hospital/agendamento/api/v1/verificar",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "hospital",
+                    "agendamento",
+                    "api",
+                    "v1",
+                    "verificar"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "reagendar",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImZoY2FyZG9zbyIsImV4cCI6MTc3NDIzNzA4Nn0.n7tvtdIlmxcMZrpDAjK3z0xLf9JABjxicsAoke8O3UI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"idAgendamento\": \"0a4141b0-b57c-490c-8b00-457a05500b06\",\r\n    \"paciente\": \"dsanchez\",\r\n    \"consulta\": 1,\r\n    \"responsavel\": \"cgomes\",\r\n    \"dataConsulta\": \"2026-03-12\",\r\n    \"reagendavel\": true,\r\n    \"triagem\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8083/hospital/agendamento/api/v1/reagendar",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "hospital",
+                    "agendamento",
+                    "api",
+                    "v1",
+                    "reagendar"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "cancelar",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImNnb21lcyIsImV4cCI6MTc3NDIzNzkzMn0.jtealoXUE6VmdzIzISIpFOchGNj5KiYUpSFn19KoN4o",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"idAgendamento\": \"3d314cea-56be-4a04-9e8a-04733d556e2e\",\r\n    \"paciente\": \"ggomes\",\r\n    \"consulta\": \"GERAL\",\r\n    \"responsavel\": \"felipe\",\r\n    \"dataConsulta\": \"2026-03-12\",\r\n    \"reagendavel\": false\r\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8083/hospital/agendamento/api/v1/cancelar/0a4141b0-b57c-490c-8b00-457a05500b06",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "hospital",
+                    "agendamento",
+                    "api",
+                    "v1",
+                    "cancelar",
+                    "0a4141b0-b57c-490c-8b00-457a05500b06"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "triagem",
+      "item": [
+        {
+          "name": "200",
+          "item": [
+            {
+              "name": "gerarTriagem",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImRzYW5jaGV6IiwiZXhwIjoxNzc0MjM3MTEwfQ._92FLGu5Oa2EAMX2A8u8c308dmGoSu1chpZCw8Q3ck0",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"paciente\": \"dsanchez\", \r\n    \"responsavel\": \"fhcardoso\", \r\n    \"anamnese\": {\r\n        \"descricao\": \"Dores forte na cabeça\", \r\n        \"dores\": 1, \r\n        \"diabete\": false, \r\n        \"pressaoAlta\": false, \r\n        \"coracao\": false, \r\n        \"historicoFamilia\": \"diabete\", \r\n        \"membroFamilia\": \"pai\"\r\n    }, \r\n    \"avaliacao\": {\r\n        \"pressao\": \"122mmHg\", \r\n        \"oxigenacao\": \"98%\", \r\n        \"quadroClinico\": \"enxaqueca\", \r\n        \"risco\": 0\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8084/hospital/triagem/api/v1/gerarTriagem",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "hospital",
+                    "triagem",
+                    "api",
+                    "v1",
+                    "gerarTriagem"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "consultarTriagem",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImZlbGlwZSIsImV4cCI6MTc3MzYzMzc2MX0.NGf_dmw1umvbT2K_gXtULOV0-xoy-L_3zPL76D3aMFw",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"paciente\": \"paciente\", \r\n    \"responsavel\": \"responsavel\", \r\n    \"anamnese\": {\r\n        \"descricao\": \"Dores forte na cabeça\", \r\n        \"dores\": 1, \r\n        \"diabete\": false, \r\n        \"pressaoAlta\": false, \r\n        \"coracao\": false, \r\n        \"historicoFamilia\": \"diabete\", \r\n        \"membroFamilia\": \"pai\"\r\n    }, \r\n    \"avaliacao\": {\r\n        \"pressao\": \"122mmHg\", \r\n        \"oxigenacao\": \"98%\", \r\n        \"quadroClinico\": \"enxaqueca\", \r\n        \"risco\": 0\r\n    }\r\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8084/hospital/triagem/api/v1/consultarTriagem/cb1be25f-2106-43d1-9a55-ad1ad5ce2979",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "hospital",
+                    "triagem",
+                    "api",
+                    "v1",
+                    "consultarTriagem",
+                    "cb1be25f-2106-43d1-9a55-ad1ad5ce2979"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "alterarTriagem",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJob3NwaXRhbCIsInN1YiI6ImNnb21lcyIsImV4cCI6MTc3NDIzNjk5Mn0.ao4-9DcubXw3B9BMzgY9r8cV63ox2lpF_J8CYSf27gY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"idTriagem\": \"bae9447f-18b0-447b-be5c-fadb967952c8\",\r\n    \"paciente\": \"dsanchez\",\r\n    \"responsavel\": \"fhcardoso\",\r\n    \"anamnese\": {\r\n        \"idAnamnese\": \"fd8ef97d-72ce-415c-b552-e93e1d424fc9\",\r\n        \"descricao\": \"Dores forte na cabeça\",\r\n        \"dores\": 0,\r\n        \"diabete\": false,\r\n        \"pressaoAlta\": false,\r\n        \"coracao\": false,\r\n        \"historicoFamilia\": \"diabete\",\r\n        \"membroFamilia\": \"pai\"\r\n    },\r\n    \"avaliacao\": {\r\n        \"idAvaliacao\": \"963ba50e-2613-4865-80e5-641558ba2784\",\r\n        \"pressao\": \"122mmHg\",\r\n        \"oxigenacao\": \"98%\",\r\n        \"quadroClinico\": \"enxaqueca\",\r\n        \"risco\": 0\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8084/hospital/triagem/api/v1/alterarTriagem",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "hospital",
+                    "triagem",
+                    "api",
+                    "v1",
+                    "alterarTriagem"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

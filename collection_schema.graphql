@@ -1,0 +1,68 @@
+type Historico {
+    paciente : Usuario!
+    consulta : Agendamento
+    mensagem : Notificacao
+    triagem : Triagem
+    dataRegistro: String
+    resultado : String
+}
+
+type Usuario {
+    nome : String!
+    username : String!
+    senha : String
+    dataNascimento : String!
+    tipo : String!
+    CPF : String!
+    email : String!
+    tell : String
+}
+
+type Notificacao {
+    categoria : String!
+    titulo : String!
+    mensagem : String!
+    nome : String!
+    email : String!
+    tell : String!
+}
+
+
+type Agendamento {
+    paciente : String!
+    consulta : String!
+    responsavel : String!
+    dataConsulta : String!
+    reagendavel : Boolean!
+}
+
+
+type Triagem {
+    paciente : String!
+    responsavel : String!
+    anamnese : Anamnese!
+    avaliacao : Avaliacao!
+}
+
+
+type Anamnese {
+    descricao : String!
+    dores : String!
+    diabete : Boolean!
+    pressaoAlta : Boolean!
+    coracao : Boolean!
+    historicoFamilia : String!
+    membroFamilia : String!
+}
+
+type Avaliacao {
+    pressao : String!
+    oxigenacao : String!
+    quadroClinico : String!
+    risco : String!
+}
+
+
+type Query {
+    acessarHistorico(paciente: String!) : [Historico!]!
+}
