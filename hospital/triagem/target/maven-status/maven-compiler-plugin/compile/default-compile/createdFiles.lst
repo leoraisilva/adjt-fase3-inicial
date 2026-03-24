@@ -17,6 +17,7 @@ br\com\fiap\hospital\triagem\application\useCase\inbound\gerarTriagem\GerarTriag
 br\com\fiap\hospital\triagem\infra\adapter\inbound\dto\GerarAnamneseDTO.class
 br\com\fiap\hospital\triagem\application\useCase\inbound\gerarTriagem\GerarTriagemInput.class
 br\com\fiap\hospital\triagem\infra\adapter\outbound\persistent\entity\AvaliacaoEntity.class
+br\com\fiap\hospital\triagem\infra\adapter\outbound\exception\ResponseException.class
 br\com\fiap\hospital\triagem\application\domain\AnamneseFactory.class
 br\com\fiap\hospital\triagem\infra\adapter\outbound\persistent\repository\AvaliacaoJPARepository.class
 br\com\fiap\hospital\triagem\application\useCase\outbound\TriagemRepository.class
@@ -48,3 +49,4 @@ br\com\fiap\hospital\triagem\infra\config\TriagemConfig.class
 br\com\fiap\hospital\triagem\infra\adapter\outbound\persistent\repository\AnamneseJPARepository.class
 br\com\fiap\hospital\triagem\application\useCase\inbound\alterarTriagem\AlterarTriagemOutput.class
 br\com\fiap\hospital\triagem\infra\config\security\SecurityFilter.class
+br\com\fiap\hospital\triagem\infra\adapter\outbound\exception\GlobalExceptionHandle.class

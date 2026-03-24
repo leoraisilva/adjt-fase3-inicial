@@ -22,6 +22,7 @@ br\com\fiap\hospital\notificacao\infra\adapter\inbound\mapper\INotificacaoMapper
 br\com\fiap\hospital\notificacao\NotificacaoGrpc$MethodHandlers.class
 br\com\fiap\hospital\notificacao\NotificacaoGrpc$NotificacaoImplBase.class
 br\com\fiap\hospital\notificacao\NotificacaoGrpc$NotificacaoMethodDescriptorSupplier.class
+br\com\fiap\hospital\notificacao\infra\adapter\outbound\exception\ResponseException.class
 br\com\fiap\hospital\notificacao\NotificacaoGrpc$NotificacaoBlockingStub.class
 br\com\fiap\hospital\notificacao\application\domain\DefaultNotificacaoFactory.class
 br\com\fiap\hospital\notificacao\Response$1.class
@@ -31,6 +32,7 @@ br\com\fiap\hospital\notificacao\NotificacaoOuterClass.class
 br\com\fiap\hospital\notificacao\application\domain\NotificacaoFactory.class
 br\com\fiap\hospital\notificacao\Response.class
 br\com\fiap\hospital\notificacao\infra\config\NotificacaoServerConfiguracao$1.class
+br\com\fiap\hospital\notificacao\infra\adapter\outbound\exception\GlobalExceptionHandle.class
 br\com\fiap\hospital\notificacao\EnviarRequest.class
 br\com\fiap\hospital\notificacao\EnviarRequest$Builder.class
 br\com\fiap\hospital\notificacao\ReceberRequest.class

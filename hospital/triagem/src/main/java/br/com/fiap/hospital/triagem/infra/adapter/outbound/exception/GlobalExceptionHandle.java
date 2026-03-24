@@ -1,6 +1,7 @@
 package br.com.fiap.hospital.triagem.infra.adapter.outbound.exception;
 
 
+import br.com.fiap.hospital.triagem.infra.adapter.outbound.controller.TriagemController;
 import br.com.fiap.hospital.usuario.infra.adapter.outbound.exception.ResponseException;
 import org.hibernate.sql.exec.ExecutionException;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -13,7 +14,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.sql.SQLException;
 
-@ControllerAdvice
+
 public class GlobalExceptionHandle {
     @ExceptionHandler(value = {ChangeSetPersister.NotFoundException.class})
     protected ResponseEntity<Object> handleNotFound(RuntimeException e, WebRequest request) {

@@ -1,5 +1,6 @@
 package br.com.fiap.hospital.usuario.infra.adapter.outbound.exception;
 
+import br.com.fiap.hospital.usuario.infra.adapter.outbound.controller.UsuarioController;
 import org.hibernate.sql.exec.ExecutionException;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpHeaders;
@@ -50,9 +51,9 @@ public class GlobalExceptionHandle {
     }
 
     @ExceptionHandler(value = {SQLException.class})
-    protected ResponseEntity<Object> handleSQLException(RuntimeException e, WebRequest request) {
+    protected ResponseEntity<Object> handleSQLException(SQLException e, WebRequest request) {
         var response = new ResponseException(
-                ExecutionException.class.getTypeName(),
+                SQLException.class.getTypeName(),
                 HttpStatus.BAD_REQUEST.getReasonPhrase(),
                 HttpStatus.BAD_REQUEST.value(),
                 "Request Not Accept",

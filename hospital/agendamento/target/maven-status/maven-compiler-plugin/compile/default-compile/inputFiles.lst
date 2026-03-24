@@ -1,32 +1,34 @@
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\config\security\SecurityFilter.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\inbound\mapper\AgendamentoMapper.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\config\AgendamentoConfig.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\service\AgendamentoService.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\config\security\AgendamentoSecurity.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\verificar\Verificar.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\reagendar\ReagendarInput.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\outbound\AgendamentoRepository.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\gateway\AgendamentoImplRepository.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\reagendar\Reagendar.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\verificar\VerificarOutput.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\domain\DefaultAgendamentoFactory.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\inbound\dto\AgendarDTO.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\outbound\persistent\repository\AgendamentoJPARepository.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\outbound\controller\AgendamentoController.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\domain\Agendamento.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\inbound\dto\ReagendarDTO.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\AgendamentoPort.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\buscarConsulta\BuscarConsultaOutput.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\AgendamentoApplication.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\domain\AgendamentoFactory.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\agendar\Agendar.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\cancelar\CancelarOutput.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\inbound\mapper\IAgendamentoMapper.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\cancelar\Cancelar.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\agendar\AgendarInput.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\agendar\AgendarOutput.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\reagendar\ReagendarOutput.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\config\security\TokenService.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\buscarConsulta\BuscarConsulta.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\outbound\persistent\entity\AgendamentoEntity.java
-C:\Users\summ17\Documents\project\java\Nova pasta\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\domain\ConsultaType.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\agendar\AgendarOutput.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\cancelar\CancelarOutput.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\config\AgendamentoConfig.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\agendar\Agendar.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\reagendar\Reagendar.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\inbound\mapper\AgendamentoMapper.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\cancelar\Cancelar.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\verificar\VerificarOutput.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\outbound\controller\AgendamentoController.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\domain\Agendamento.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\domain\DefaultAgendamentoFactory.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\AgendamentoPort.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\outbound\exception\ResponseException.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\service\AgendamentoService.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\inbound\dto\AgendarDTO.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\buscarConsulta\BuscarConsulta.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\inbound\mapper\IAgendamentoMapper.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\buscarConsulta\BuscarConsultaOutput.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\domain\ConsultaType.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\config\security\AgendamentoSecurity.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\agendar\AgendarInput.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\verificar\Verificar.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\reagendar\ReagendarInput.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\inbound\reagendar\ReagendarOutput.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\outbound\persistent\entity\AgendamentoEntity.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\AgendamentoApplication.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\outbound\exception\GlobalExceptionHandle.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\useCase\outbound\AgendamentoRepository.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\config\security\SecurityFilter.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\outbound\persistent\repository\AgendamentoJPARepository.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\config\security\TokenService.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\gateway\AgendamentoImplRepository.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\application\domain\AgendamentoFactory.java
+C:\Users\Conta\Documents\Java\fase_3\adjt-fase3-inicial\hospital\agendamento\src\main\java\br\com\fiap\hospital\agendamento\infra\adapter\inbound\dto\ReagendarDTO.java

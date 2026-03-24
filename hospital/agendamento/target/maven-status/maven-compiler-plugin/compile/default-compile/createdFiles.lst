@@ -1,5 +1,6 @@
 br\com\fiap\hospital\agendamento\application\domain\AgendamentoFactory.class
 br\com\fiap\hospital\agendamento\infra\adapter\inbound\mapper\AgendamentoMapper.class
+br\com\fiap\hospital\agendamento\infra\adapter\outbound\exception\ResponseException.class
 br\com\fiap\hospital\agendamento\infra\config\security\SecurityFilter.class
 br\com\fiap\hospital\agendamento\infra\config\AgendamentoConfig.class
 br\com\fiap\hospital\agendamento\infra\config\security\TokenService.class
@@ -17,6 +18,7 @@ br\com\fiap\hospital\agendamento\infra\adapter\inbound\mapper\IAgendamentoMapper
 br\com\fiap\hospital\agendamento\application\useCase\inbound\reagendar\Reagendar.class
 br\com\fiap\hospital\agendamento\application\useCase\inbound\verificar\VerificarOutput.class
 br\com\fiap\hospital\agendamento\infra\adapter\inbound\dto\AgendarDTO.class
+br\com\fiap\hospital\agendamento\infra\adapter\outbound\exception\GlobalExceptionHandle.class
 br\com\fiap\hospital\agendamento\infra\config\security\AgendamentoSecurity.class
 br\com\fiap\hospital\agendamento\application\useCase\inbound\AgendamentoPort.class
 br\com\fiap\hospital\agendamento\infra\adapter\outbound\controller\AgendamentoController.class

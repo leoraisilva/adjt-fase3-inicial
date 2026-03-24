@@ -1,5 +1,6 @@
 br\com\fiap\hospital\historico\application\domain\Historico.class
 br\com\fiap\hospital\historico\application\useCase\outbound\HistoricoRepository.class
+br\com\fiap\hospital\historico\infra\adapter\outbound\exception\GlobalExceptionHandle.class
 br\com\fiap\hospital\historico\application\useCase\inbound\acessar\AcessarHistorico.class
 br\com\fiap\hospital\historico\infra\adapter\consumer\HistoricoConsumer.class
 br\com\fiap\hospital\historico\application\service\HistoricoService.class
@@ -15,4 +16,5 @@ br\com\fiap\hospital\historico\infra\adapter\outbound\controller\HistoricoContro
 br\com\fiap\hospital\historico\application\domain\Historico$HistoricoBuilder.class
 br\com\fiap\hospital\historico\application\domain\HistoricoFactory.class
 br\com\fiap\hospital\historico\infra\adapter\inbound\mapper\IHistoricoMapper.class
+br\com\fiap\hospital\historico\infra\adapter\outbound\exception\ResponseException.class
 br\com\fiap\hospital\historico\infra\adapter\outbound\persistent\repository\HistoricoJpaRepository.class

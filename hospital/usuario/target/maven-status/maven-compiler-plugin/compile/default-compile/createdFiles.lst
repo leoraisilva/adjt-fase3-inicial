@@ -9,6 +9,7 @@ br\com\fiap\hospital\usuario\infra\adapter\inbound\dto\LoginDTO.class
 br\com\fiap\hospital\usuario\application\domain\UserType.class
 br\com\fiap\hospital\usuario\application\useCase\inbound\createUsuario\CreateUsuarioInput.class
 br\com\fiap\hospital\usuario\application\useCase\inbound\createUsuario\CreateUsuario.class
+br\com\fiap\hospital\usuario\infra\adapter\outbound\exception\ResponseException.class
 br\com\fiap\hospital\usuario\application\useCase\inbound\deleteUsuario\DeleteUsuario.class
 br\com\fiap\hospital\usuario\infra\config\security\SecurityFilter.class
 br\com\fiap\hospital\usuario\infra\config\UsuarioConfig.class
@@ -16,6 +17,7 @@ br\com\fiap\hospital\usuario\infra\adapter\outbound\dto\TokenDTO.class
 br\com\fiap\hospital\usuario\application\useCase\inbound\getUsuario\GetUsuarioOutput.class
 br\com\fiap\hospital\usuario\application\useCase\inbound\updateUsuario\UpdateUsuario.class
 br\com\fiap\hospital\usuario\infra\adapter\outbound\persistent\repository\UsuarioJPARepository.class
+br\com\fiap\hospital\usuario\infra\adapter\outbound\exception\GlobalExceptionHandle.class
 br\com\fiap\hospital\usuario\application\useCase\inbound\deleteUsuario\DeleteUsuarioOutput.class
 br\com\fiap\hospital\usuario\infra\adapter\inbound\dto\UsuarioUpdateDTO.class
 br\com\fiap\hospital\usuario\infra\adapter\outbound\persistent\entity\UsuarioEntity.class

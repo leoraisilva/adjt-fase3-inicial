@@ -1,6 +1,7 @@
 package br.com.fiap.hospital.agendamento.infra.adapter.outbound.exception;
 
 
+import br.com.fiap.hospital.agendamento.infra.adapter.outbound.controller.AgendamentoController;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.sql.SQLException;
 import java.util.concurrent.ExecutionException;
 
-@ControllerAdvice
+
 public class GlobalExceptionHandle {
     @ExceptionHandler(value = {ChangeSetPersister.NotFoundException.class})
     protected ResponseEntity<Object> handleNotFound(RuntimeException e, WebRequest request) {
